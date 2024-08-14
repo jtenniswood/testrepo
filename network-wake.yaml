@@ -32,9 +32,9 @@ binary_sensor:
 # Uptime Sensor
 sensor:
   - platform: uptime
+    name: "Uptime"
     type: seconds
     update_interval: 30s
-    name: Uptime Sensor
 
 # Wifi Signal Strength
   - platform: wifi_signal
