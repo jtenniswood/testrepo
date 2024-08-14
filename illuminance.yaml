@@ -40,6 +40,7 @@ sensor:
   - platform: bh1750
     name: "Sensor"
     address: 0x23
+    accuracy_decimals: 1
     update_interval: 1s
 
 # Wifi Signal Strength
