@@ -88,8 +88,8 @@ web_server:
 # Presense Sensor
 uart:
   id: UART2
-  rx_pin: GPIO2
-  tx_pin: GPIO3
+  rx_pin: GPIO1
+  tx_pin: GPIO2
   baud_rate: 256000
   data_bits: 8
   stop_bits: 1
