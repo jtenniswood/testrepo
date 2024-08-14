@@ -23,6 +23,7 @@ esp32_ble_tracker:
 bluetooth_proxy:
   active: true
 
+# I2C Bus
 i2c:
   sda: GPIO1
   scl: GPIO2
@@ -30,15 +31,6 @@ i2c:
   id: bus_a
 
 # Presense Sensor
-uart:
-  id: UART2
-  rx_pin: GPIO1
-  tx_pin: GPIO2
-  baud_rate: 256000
-  data_bits: 8
-  stop_bits: 1
-  parity: NONE
-
 ld2410:
   id: my_ld2410
   uart_id: UART2
