@@ -23,6 +23,20 @@ esp32_ble_tracker:
 bluetooth_proxy:
   active: true
 
+# Presense Sensor
+uart:
+  id: UART2
+  rx_pin: GPIO1
+  tx_pin: GPIO2
+  baud_rate: 256000
+  data_bits: 8
+  stop_bits: 1
+  parity: NONE
+
+ld2410:
+  id: my_ld2410
+  uart_id: UART2
+
 # Online Status
 binary_sensor:
   - platform: status
@@ -121,20 +135,6 @@ text_sensor:
 web_server:
   port: 80
   version: 3
-
-# Presense Sensor
-uart:
-  id: UART2
-  rx_pin: GPIO1
-  tx_pin: GPIO2
-  baud_rate: 256000
-  data_bits: 8
-  stop_bits: 1
-  parity: NONE
-
-ld2410:
-  id: my_ld2410
-  uart_id: UART2
 
 # Presense Sensor
 switch:
