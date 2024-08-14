@@ -1,3 +1,9 @@
+# M5 Atom S3
+esphome:
+  name: ${name}
+  friendly_name: ${friendly_name}
+  area: ${room}
+
 # Enable logging
 logger:
 
