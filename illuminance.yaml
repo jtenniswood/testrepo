@@ -4,6 +4,9 @@ esp32:
   framework:
     type: arduino
 
+# Enable logging
+logger:
+
 # Bluetooth Proxy
 esp32_ble_tracker:
   scan_parameters:
@@ -51,7 +54,7 @@ sensor:
 
 # Illuminance Sensor
   - platform: bh1750
-    name: "Office Illuminance"
+    name: "Illuminance"
     address: 0x23
     update_interval: 1s
 
