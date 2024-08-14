@@ -1,3 +1,12 @@
+# M5 Atom S3
+esp32:
+  board: esp32-s3-devkitc-1
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
 # Bluetooth Proxy
 esp32_ble_tracker:
   scan_parameters:
@@ -10,19 +19,19 @@ bluetooth_proxy:
 # Online Status
 binary_sensor:
   - platform: status
-    name: Online
+    name: "Online"
     id: ink_ha_connected
 
 # Uptime Sensor
 sensor:
   - platform: uptime
+    name: "Uptime"
     type: seconds
     update_interval: 30s
-    name: Uptime
     
 # Illuminance Sensor
   - platform: bh1750
-    name: Sensor
+    name: "Sensor"
     address: 0x23
     update_interval: 1s
 
