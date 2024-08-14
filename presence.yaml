@@ -23,6 +23,12 @@ esp32_ble_tracker:
 bluetooth_proxy:
   active: true
 
+i2c:
+  sda: GPIO1
+  scl: GPIO2
+  scan: true
+  id: bus_a
+
 # Presense Sensor
 uart:
   id: UART2
