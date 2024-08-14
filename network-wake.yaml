@@ -26,7 +26,7 @@ bluetooth_proxy:
 # Online Status
 binary_sensor:
   - platform: status
-    name: Online
+    name: "Online"
     id: ink_ha_connected
 
 # Uptime Sensor
