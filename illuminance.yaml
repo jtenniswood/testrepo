@@ -73,7 +73,7 @@ text_sensor:
   - platform: template
     name: "Uptime"
     id: uptimes
-    icon: mdi:clock-start
+    icon: mdi:update
     entity_category: diagnostic
     lambda: |-
       int seconds = (id(uptime_sensor).state);
