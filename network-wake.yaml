@@ -97,7 +97,9 @@ button:
   - platform: wake_on_lan
     name: ${device1_name}
     target_mac_address: ${device1_mac}
+    icon: mdi:power-standby
 
   - platform: wake_on_lan
     name: ${device2_name}
     target_mac_address: ${device2_mac}
+    icon: mdi:power-standby
