@@ -29,12 +29,13 @@ binary_sensor:
     name: "Online"
     id: ink_ha_connected
 
-# Uptime Sensor
 sensor:
+# Uptime Sensor
   - platform: uptime
-    name: "Uptime"
-    type: seconds
-    update_interval: 30s
+    name: "Uptime Sensor"
+    id: uptime_sensor
+    entity_category: diagnostic
+    internal: true
     
 # Illuminance Sensor
   - platform: bh1750
@@ -48,7 +49,9 @@ sensor:
     id: wifi_signal_db
     update_interval: 60s
     entity_category: "diagnostic"
+    internal: true
 
+# Wifi Signal Strength
   - platform: copy
     source_id: wifi_signal_db
     name: "Wifi Strength"
@@ -58,11 +61,37 @@ sensor:
     entity_category: "diagnostic"
     device_class: ""
 
-# Ip Address
 text_sensor:
+# Ip Address
   - platform: wifi_info
     ip_address:
       name: IP Address
+
+# Uptime Sensor
+  - platform: template
+    name: "Uptime"
+    id: uptimes
+    icon: mdi:clock-start
+    entity_category: diagnostic
+    lambda: |-
+      int seconds = (id(uptime_sensor).state);
+      int days = seconds / (24 * 3600);
+      seconds = seconds % (24 * 3600);
+      int hours = seconds / 3600;
+      seconds = seconds % 3600;
+      int minutes = seconds /  60;
+      seconds = seconds % 60;
+      if ( days > 3650 ) {
+        return { "Starting up" };
+      } else if ( days ) {
+        return { (String(days) +"d " + String(hours) +"h " + String(minutes) +"m "+ String(seconds) +"s").c_str() };
+      } else if ( hours ) {
+        return { (String(hours) +"h " + String(minutes) +"m "+ String(seconds) +"s").c_str() };
+      } else if ( minutes ) {
+        return { (String(minutes) +"m "+ String(seconds) +"s").c_str() };
+      } else {
+        return { (String(seconds) +"s").c_str() };
+      }
 
 #Dashboard
 web_server:
