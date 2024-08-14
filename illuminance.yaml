@@ -58,6 +58,7 @@ sensor:
     filters:
       - lambda: return min(max(2 * (x + 100.0), 0.0), 100.0);
     unit_of_measurement: "%"
+    icon: mdi:wifi
     entity_category: "diagnostic"
     device_class: ""
 
