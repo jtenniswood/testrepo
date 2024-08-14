@@ -38,17 +38,17 @@ sensor:
     internal: true
 
 # Wifi Signal Strength
-  - platform: wifi_signal
-    name: "Wifi Signal dB"
+  - platform: wifi_signal 
+    name: "WiFi Signal dB"
     id: wifi_signal_db
-    update_interval: 60s
+    update_interval: 30s
     entity_category: "diagnostic"
     internal: true
-
+    
 # Wifi Signal Strength
-  - platform: copy
+  - platform: copy 
     source_id: wifi_signal_db
-    name: "Wifi Strength"
+    name: "WiFi Signal Percent"
     filters:
       - lambda: return min(max(2 * (x + 100.0), 0.0), 100.0);
     unit_of_measurement: "%"
