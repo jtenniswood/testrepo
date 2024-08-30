@@ -45,11 +45,11 @@ binary_sensor:
   - platform: custom
     lambda: |-
       auto uart_component = static_cast<LD2412 *>(ld2412);
-      return {uart_component->Target,uart_component->MovingTarget,uart_component->StillTarget};
+      return {uart_component->hasTarget,uart_component->hasMovingTarget,uart_component->hasStillTarget};
     binary_sensors:
-      - name: "Target"
-      - name: "Moving Target"
-      - name: "Still Target"
+      - name: "Has Target"
+      - name: "Has Moving Target"
+      - name: "Has Still Target"
 
 # Online Status
   - platform: status
@@ -62,18 +62,18 @@ sensor:
   - platform: custom
     lambda: |-
       auto uart_component = static_cast<LD2412 *>(ld2412);
-      return {uart_component->movingDistance,uart_component->movingEnergy,uart_component->stillDistance,uart_component->stillEnergy};
+      return {uart_component->movingTargetDistance,uart_component->movingTargetEnergy,uart_component->stillTargetDistance,uart_component->stillTargetEnergy};
     sensors:
-      - name: "Moving Distance"
+      - name: "Moving Target Distance"
         unit_of_measurement: "cm"
         accuracy_decimals: 0
-      - name: "Moving Energy"
+      - name: "Moving Target Energy"
         unit_of_measurement: "%"
         accuracy_decimals: 0
-      - name: "Still Distance"
+      - name: "Still Target Distance"
         unit_of_measurement: "cm"
         accuracy_decimals: 0
-      - name: "Still Energy"
+      - name: "Still Target Energy"
         unit_of_measurement: "%"
         accuracy_decimals: 0
 
