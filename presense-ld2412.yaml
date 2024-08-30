@@ -62,18 +62,18 @@ sensor:
   - platform: custom
     lambda: |-
       auto uart_component = static_cast<LD2412 *>(ld2412);
-      return {uart_component->movingTargetDistance,uart_component->movingTargetEnergy,uart_component->stillTargetDistance,uart_component->stillTargetEnergy};
+      return {uart_component->movingDistance,uart_component->movingEnergy,uart_component->stillDistance,uart_component->stillEnergy};
     sensors:
-      - name: "Moving Target Distance"
+      - name: "Moving Distance"
         unit_of_measurement: "cm"
         accuracy_decimals: 0
-      - name: "Moving Target Energy"
+      - name: "Moving Energy"
         unit_of_measurement: "%"
         accuracy_decimals: 0
-      - name: "Still Target Distance"
+      - name: "Still Distance"
         unit_of_measurement: "cm"
         accuracy_decimals: 0
-      - name: "Still Target Energy"
+      - name: "Still Energy"
         unit_of_measurement: "%"
         accuracy_decimals: 0
 
