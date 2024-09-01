@@ -71,6 +71,6 @@ button:
 
 # Presense Sensor
 switch:
-  - platform: ld2410
+  - platform: ld2412
     bluetooth:
       name: "Bluetooth"
