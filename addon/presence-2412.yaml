@@ -67,10 +67,3 @@ button:
     name: "Reboot sensor"
     on_press:
       lambda: 'static_cast<LD2412 *>(ld2412)->reboot();'
-
-
-# Presense Sensor
-switch:
-  - platform: ld2412
-    bluetooth:
-      name: "Bluetooth"
