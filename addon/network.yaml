@@ -33,6 +33,7 @@ sensor:
     entity_category: "diagnostic"
     device_class: ""
 
+
 text_sensor:
 # Ip Address
   - platform: wifi_info
