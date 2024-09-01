@@ -5,6 +5,7 @@ binary_sensor:
     id: ink_ha_connected
     icon: mdi:check-network
 
+
 sensor:
 # Uptime Sensor
   - platform: uptime
@@ -31,6 +32,7 @@ sensor:
     icon: mdi:wifi
     entity_category: "diagnostic"
     device_class: ""
+
 
 text_sensor:
 # Ip Address
