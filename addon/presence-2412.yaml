@@ -43,15 +43,19 @@ sensor:
       - name: "Moving Distance"
         unit_of_measurement: "cm"
         accuracy_decimals: 0
+        icon: mdi:signal-distance-variant
       - name: "Moving Energy"
         unit_of_measurement: "%"
         accuracy_decimals: 0
+        icon: mdi:motion-sensor
       - name: "Still Distance"
         unit_of_measurement: "cm"
         accuracy_decimals: 0
+        icon: mdi:signal-distance-variant
       - name: "Still Energy"
         unit_of_measurement: "%"
         accuracy_decimals: 0
+        icon: mdiflash
 
 
 button:
