@@ -1,9 +1,4 @@
 # Online Status
-binary_sensor:
-  - platform: status
-    name: "Online"
-    id: ink_ha_connected
-    icon: mdi:check-network
 
 sensor:
 # Uptime Sensor
