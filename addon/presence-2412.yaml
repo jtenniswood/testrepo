@@ -28,9 +28,12 @@ binary_sensor:
       auto uart_component = static_cast<LD2412 *>(ld2412);
       return {uart_component->hasTarget,uart_component->hasMovingTarget,uart_component->hasStillTarget};
     binary_sensors:
-      - name: "Has Target"
-      - name: "Has Moving Target"
-      - name: "Has Still Target"
+#     - name: "Has Target"
+#     - name: "Has Moving Target"
+#     - name: "Has Still Target"
+      - name: "Presence"
+      - name: "Moving Target"
+      - name: "Still Target"
 
 
 sensor: 
