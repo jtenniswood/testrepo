@@ -61,9 +61,16 @@ sensor:
         icon: mdi:flash
 
 
-button:
-# Presense Sensor  
+# Presense Sensor 
+button: 
   - platform: template
     name: "Reboot sensor"
     on_press:
       lambda: 'static_cast<LD2412 *>(ld2412)->reboot();'
+
+
+# Presense Sensor
+switch:
+  - platform: ld2410
+    bluetooth:
+      name: "Bluetooth"
