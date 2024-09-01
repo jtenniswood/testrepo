@@ -17,7 +17,7 @@ binary_sensor:
 # Presense Sensor
   - platform: custom
     lambda: |-
-      auto uart_component = static_cast<LD2412 *>(ld2412);
+      auto uart_component = static_cast<ld2412 *>(ld2412);
       return {uart_component->hasTarget,uart_component->hasMovingTarget,uart_component->hasStillTarget};
     binary_sensors:
       - name: "Has Target"
