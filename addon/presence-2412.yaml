@@ -28,9 +28,6 @@ binary_sensor:
       auto uart_component = static_cast<LD2412 *>(ld2412);
       return {uart_component->hasTarget,uart_component->hasMovingTarget,uart_component->hasStillTarget};
     binary_sensors:
-#     - name: "Has Target"
-#     - name: "Has Moving Target"
-#     - name: "Has Still Target"
       - name: "Presence"
       - name: "Moving Target"
       - name: "Still Target"
@@ -43,16 +40,16 @@ sensor:
       auto uart_component = static_cast<LD2412 *>(ld2412);
       return {uart_component->movingTargetDistance,uart_component->movingTargetEnergy,uart_component->stillTargetDistance,uart_component->stillTargetEnergy};
     sensors:
-      - name: "Moving Target Distance"
+      - name: "Moving Distance"
         unit_of_measurement: "cm"
         accuracy_decimals: 0
-      - name: "Moving Target Energy"
+      - name: "Moving Energy"
         unit_of_measurement: "%"
         accuracy_decimals: 0
-      - name: "Still Target Distance"
+      - name: "Still Distance"
         unit_of_measurement: "cm"
         accuracy_decimals: 0
-      - name: "Still Target Energy"
+      - name: "Still Energy"
         unit_of_measurement: "%"
         accuracy_decimals: 0
 
