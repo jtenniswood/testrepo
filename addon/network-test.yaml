@@ -4,3 +4,12 @@ binary_sensor:
     name: "Online"
     id: ink_ha_connected
     icon: mdi:check-network
+
+
+sensor:
+# Uptime Sensor
+  - platform: uptime
+    name: "Uptime Sensor"
+    id: uptime_sensor
+    entity_category: diagnostic
+    internal: true
