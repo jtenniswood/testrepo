@@ -1,7 +1,7 @@
 # Esphome
 esphome:
   includes:
-    - ld2412.h
+    - library/ld2412.h
 
 # Presense Sensor
 uart:
