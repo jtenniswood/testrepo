@@ -3,6 +3,7 @@ esphome:
   includes:
     - library/ld2412.h
 
+
 # Presense Sensor
 uart:
   id: uart_1
@@ -11,12 +12,14 @@ uart:
   baud_rate: 115200
   parity: NONE
 
+
 # Presense Sensor
 custom_component:
   - lambda: |-
       return {new LD2412(id(uart_1))};
     components:
       - id: ld2412
+
 
 binary_sensor:
 # Presense Sensor
@@ -34,7 +37,6 @@ binary_sensor:
     name: "Online"
     id: ink_ha_connected
     icon: mdi:check-network
-
 
 
 sensor: 
