@@ -5,6 +5,7 @@ i2c:
     scl: 1
     scan: true
 
+
 sensor:    
 # Illuminance Sensor
   - platform: bh1750
