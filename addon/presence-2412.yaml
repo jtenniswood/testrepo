@@ -29,6 +29,11 @@ binary_sensor:
       - name: "Has Moving Target"
       - name: "Has Still Target"
 
+  - platform: status
+    name: "Online"
+    id: ink_ha_connected
+    icon: mdi:check-network
+
 sensor: 
 # Presense Sensor
   - platform: custom
