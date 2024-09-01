@@ -9,8 +9,8 @@ esphome:
   name: ${name}
   friendly_name: ${friendly_name}
   area: ${room}
-  includes:
-    - ld2412.h
+#  includes:
+#    - ld2412.h
 
 # Enable logging
 logger:
