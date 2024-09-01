@@ -14,3 +14,8 @@ esphome:
 
 # Enable logging
 logger:
+
+#Dashboard
+web_server:
+  port: 80
+  version: 3
