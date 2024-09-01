@@ -55,7 +55,7 @@ sensor:
       - name: "Still Energy"
         unit_of_measurement: "%"
         accuracy_decimals: 0
-        icon: mdiflash
+        icon: mdi:flash
 
 
 button:
