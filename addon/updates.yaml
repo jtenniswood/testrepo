@@ -1,4 +1,4 @@
 # Esphome version sensor
 text_sensor:
   - platform: version
-    name: ${device_name} ESPHome Version
+    name: Esphome version
