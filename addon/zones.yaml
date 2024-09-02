@@ -19,9 +19,9 @@ number:
     timeout:
       name: Radar Timeout
     max_move_distance_gate:
-      name: Radar Max Move Distance
+      name: Max Move Distance
     max_still_distance_gate:
-      name: Radar Max Still Distance
+      name: Max Still Distance
     g0:
       move_threshold:
         name: g0 move threshold
@@ -70,7 +70,7 @@ number:
 
   # Setting ending of zone 1 occupancy
   - platform: template
-    name: "Radar End Zone 1"
+    name: "Zone 1 End"
     id: radar_z1_end
     device_class: distance
     min_value: 0
@@ -86,7 +86,7 @@ number:
 
   # Setting ending of zone 2 occupancy
   - platform: template
-    name: "Radar End Zone 2"
+    name: "Zone 2 End"
     id: radar_z2_end
     device_class: distance
     min_value: 0
@@ -97,22 +97,6 @@ number:
     optimistic: true
     restore_value: true
     initial_value: 36
-    icon: "mdi:arrow-collapse-right"
-    entity_category: CONFIG
-
-  # Setting ending of zone 3 occupancy
-  - platform: template
-    name: "Radar End Zone 3"
-    id: radar_z3_end
-    device_class: distance
-    min_value: 0
-    max_value: 600
-    step: 1
-    mode: box
-    update_interval: never
-    optimistic: true
-    restore_value: true
-    initial_value: 100
     icon: "mdi:arrow-collapse-right"
     entity_category: CONFIG
 
@@ -128,7 +112,7 @@ binary_sensor:
       name: Radar Still Target
   ## Set Up Radar Zones Based On Distance
   - platform: template
-    name: "Radar Zone 1 Occupancy"
+    name: "Zone 1 Occupancy"
     device_class: occupancy
     icon: mdi:motion-sensor
     lambda: |-
@@ -138,7 +122,7 @@ binary_sensor:
         return false;
       }
   - platform: template
-    name: "Radar Zone 2 Occupancy"
+    name: "Zone 2 Occupancy"
     device_class: occupancy
     icon: mdi:motion-sensor
     lambda: |-
@@ -147,31 +131,21 @@ binary_sensor:
       } else {
         return false;
       }
-  - platform: template
-    name: "Radar Zone 3 Occupancy"
-    device_class: occupancy
-    icon: mdi:motion-sensor
-    lambda: |-
-      if ((id(radar_has_target).state) && ((id(radar_z2_end).state < id(radar_detection_distance).state) && (id(radar_detection_distance).state < id(radar_z3_end).state))) {
-        return true;
-      } else {
-        return false;
-      }
   
 sensor:
   - platform: ld2410
     moving_distance:
-      name: Radar Moving Distance
+      name: Moving Distance
       id: moving_distance
     still_distance:
-      name: Radar Still Distance
+      name: Still Distance
       id: still_distance
     moving_energy:
-      name: Radar Move Energy
+      name: Move Energy
     still_energy:
-      name: Radar Still Energy
+      name: Still Energy
     detection_distance:
-      name: Radar Detection Distance
+      name: Detection Distance
       id: radar_detection_distance
     g0:
       move_energy:
@@ -224,10 +198,6 @@ time:
     id: time_sntp
 
 button:
-  - platform: restart
-    icon: mdi:power-cycle
-    name: "ESP Reboot"
-
   - platform: factory_reset
     disabled_by_default: True
     name: "Factory Reset ESP"
@@ -244,7 +214,7 @@ button:
 switch:
   - platform: ld2410
     bluetooth:
-      name: "Radar Control Bluetooth"
+      name: "Bluetooth"
       id: radar_bluetooth
     engineering_mode:
       name: "Radar Engineering Mode"
@@ -252,9 +222,9 @@ switch:
 text_sensor:
   - platform: ld2410
     version:
-      name: "Radar Firmware Version"
+      name: "Firmware"
 
 select:
   - platform: ld2410
     distance_resolution:
-      name: "Radar Distance Resolution"
+      name: "Distance Resolution"
