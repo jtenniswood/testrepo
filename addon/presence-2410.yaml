@@ -18,10 +18,12 @@ binary_sensor:
   - platform: ld2410
     has_target:
       name: Presence
+      id: has_target
     has_moving_target:
       name: Moving Target
     has_still_target:
       name: Still Target
+      
 
 sensor:
 # Presense Sensor
