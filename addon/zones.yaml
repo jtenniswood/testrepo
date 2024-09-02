@@ -1,7 +1,7 @@
 number:
 # Setting ending of zone 1 occupancy
   - platform: template
-    name: "Radar End Zone 1"
+    name: "Zone 1 End"
     id: radar_z1_end
     device_class: distance
     min_value: 0
@@ -17,7 +17,7 @@ number:
 
   # Setting ending of zone 2 occupancy
   - platform: template
-    name: "Radar End Zone 2"
+    name: "Zone 2 End"
     id: radar_z2_end
     device_class: distance
     min_value: 0
@@ -33,7 +33,7 @@ number:
 
   # Setting ending of zone 3 occupancy
   - platform: template
-    name: "Radar End Zone 3"
+    name: "Zone 3 End"
     id: radar_z3_end
     device_class: distance
     min_value: 0
@@ -50,7 +50,7 @@ number:
 binary_sensor:
   ## Set Up Radar Zones Based On Distance
   - platform: template
-    name: "Radar Zone 1 Occupancy"
+    name: "Zone 1 Occupancy"
     device_class: occupancy
     icon: mdi:motion-sensor
     lambda: |-
@@ -60,7 +60,7 @@ binary_sensor:
         return false;
       }
   - platform: template
-    name: "Radar Zone 2 Occupancy"
+    name: "Zone 2 Occupancy"
     device_class: occupancy
     icon: mdi:motion-sensor
     lambda: |-
@@ -70,7 +70,7 @@ binary_sensor:
         return false;
       }
   - platform: template
-    name: "Radar Zone 3 Occupancy"
+    name: "Zone 3 Occupancy"
     device_class: occupancy
     icon: mdi:motion-sensor
     lambda: |-
