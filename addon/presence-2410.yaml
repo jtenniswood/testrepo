@@ -38,6 +38,7 @@ sensor:
       name: Still Energy
     detection_distance:
       name: Detection Distance
+      id: detection_distance
 
 # Presense Sensor
 switch:
