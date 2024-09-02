@@ -1,4 +1,5 @@
 # Esphome version sensor
 text_sensor:
   - platform: version
-    name: Esphome version
+    name: Version
+    icon: mdi:package-variant-closed
