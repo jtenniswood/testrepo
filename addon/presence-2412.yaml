@@ -29,6 +29,7 @@ binary_sensor:
       return {uart_component->hasTarget,uart_component->hasMovingTarget,uart_component->hasStillTarget};
     binary_sensors:
       - name: "Presence"
+        id: has_target
         icon: mdi:account
       - name: "Moving Target"
         icon: mdi:motion-sensor
