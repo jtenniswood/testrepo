@@ -18,6 +18,7 @@ text_sensor:
   - platform: version
     name: Version
     icon: mdi:package-variant-closed
+    hide_timestamp: true
 
 # Dashboard
 web_server:
