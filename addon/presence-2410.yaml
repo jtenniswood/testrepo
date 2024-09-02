@@ -1,47 +1,69 @@
+# Sensor Library
+esphome:
+  includes:
+    - library/ld2412.h
+
+
 # Presense Sensor
 uart:
-  id: UART2
+  id: uart_1
   rx_pin: GPIO1
   tx_pin: GPIO2
-  baud_rate: 256000
-  data_bits: 8
-  stop_bits: 1
+  baud_rate: 115200
   parity: NONE
 
-# Presense Sensor
-ld2410:
-  id: my_ld2410
-  uart_id: UART2
 
-# Online Status
+# Presense Sensor
+custom_component:
+  - lambda: |-
+      return {new LD2412(id(uart_1))};
+    components:
+      - id: ld2412
+
+
 binary_sensor:
-  - platform: ld2410
-    has_target:
-      name: Presence
-      id: has_target
-    has_moving_target:
-      name: Moving Target
-    has_still_target:
-      name: Still Target
-      
-
-sensor:
 # Presense Sensor
-  - platform: ld2410
-    moving_distance:
-      name : Moving Distance
-    still_distance:
-      name: Still Distance
-    moving_energy:
-      name: Move Energy
-    still_energy:
-      name: Still Energy
-    detection_distance:
-      name: Detection Distance
-      id: detection_distance
+  - platform: custom
+    lambda: |-
+      auto uart_component = static_cast<LD2412 *>(ld2412);
+      return {uart_component->hasTarget,uart_component->hasMovingTarget,uart_component->hasStillTarget};
+    binary_sensors:
+      - name: "Presence"
+        icon: mdi:account
+      - name: "Moving Target"
+        icon: mdi:motion-sensor
+      - name: "Still Target"
+        icon: mdi:motion-sensor
 
+
+sensor: 
 # Presense Sensor
-switch:
-  - platform: ld2410
-    bluetooth:
-      name: "Bluetooth"
+  - platform: custom
+    lambda: |-
+      auto uart_component = static_cast<LD2412 *>(ld2412);
+      return {uart_component->movingTargetDistance,uart_component->movingTargetEnergy,uart_component->stillTargetDistance,uart_component->stillTargetEnergy};
+    sensors:
+      - name: "Moving Distance"
+        unit_of_measurement: "cm"
+        accuracy_decimals: 0
+        icon: mdi:signal-distance-variant
+      - name: "Moving Energy"
+        unit_of_measurement: "%"
+        accuracy_decimals: 0
+        icon: mdi:motion-sensor
+      - name: "Still Distance"
+        unit_of_measurement: "cm"
+        accuracy_decimals: 0
+        icon: mdi:signal-distance-variant
+      - name: "Still Energy"
+        unit_of_measurement: "%"
+        accuracy_decimals: 0
+        icon: mdi:flash
+
+
+# Presense Sensor 
+button: 
+  - platform: template
+    name: "Reboot sensor"
+    on_press:
+      lambda: 'static_cast<LD2412 *>(ld2412)->reboot();'
