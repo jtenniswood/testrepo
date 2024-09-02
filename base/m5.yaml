@@ -13,7 +13,13 @@ esphome:
 # Enable logging
 logger:
 
-#Dashboard
+# Esphome version sensor
+text_sensor:
+  - platform: version
+    name: Version
+    icon: mdi:package-variant-closed
+
+# Dashboard
 web_server:
   port: 80
   version: 3
