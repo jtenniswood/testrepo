@@ -26,7 +26,7 @@ binary_sensor:
   - platform: custom
     lambda: |-
       auto uart_component = static_cast<LD2412 *>(ld2412);
-      return {uart_component->hasTarget,uart_component->hasMovingTarget,uart_component->hasStillTarget};
+      return {uart_component->hasTarget,uart_component->hasMovingTarget,uart_component->hasStillTarget,uart_component->hasDetectionDistance};
     binary_sensors:
       - name: "Presence"
         id: has_target
@@ -35,6 +35,7 @@ binary_sensor:
         icon: mdi:motion-sensor
       - name: "Still Target"
         icon: mdi:motion-sensor
+      - name: "Detection Distance"
 
 
 sensor: 
