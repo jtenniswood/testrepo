@@ -1,6 +1,6 @@
 # LD2410 Presense Sensor
 uart:
-  id: uart_bus
+  id: UART_2
   baud_rate: 115200
   rx_pin: 10
   tx_pin: 9
@@ -11,7 +11,7 @@ uart:
 # Presense Sensor
 ld2410:
   id: my_ld2410
-  uart_id: uart_bus
+  uart_id: UART_2
 
 
 # Online Status
