@@ -2,8 +2,8 @@
 uart:
   id: UART2
   baud_rate: 115200
-  rx_pin: 9
-  tx_pin: 8
+  rx_pin: 8
+  tx_pin: 9
   parity: NONE
   stop_bits: 1
 
