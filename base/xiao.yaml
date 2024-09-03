@@ -13,10 +13,3 @@ esphome:
 
 # Enable logging
 logger:
-
-# Esphome version sensor
-text_sensor:
-  - platform: version
-    name: Version
-    icon: mdi:package-variant-closed
-    hide_timestamp: true
