@@ -19,8 +19,3 @@ text_sensor:
     name: Version
     icon: mdi:package-variant-closed
     hide_timestamp: true
-
-# Dashboard
-web_server:
-  port: 80
-  version: 3
