@@ -1,8 +1,8 @@
 # LD2412 Presense Sensor
 uart:
   id: uart_1
-  rx_pin: GPIO1
-  tx_pin: GPIO2
+  rx_pin: GPIO${rx_pin}
+  tx_pin: GPIO${tx_pin}
   baud_rate: 115200
   parity: NONE
 
