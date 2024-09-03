@@ -4,6 +4,7 @@ esp32_ble_tracker:
     interval: 1100ms
     window: 1100ms
 
+
 # Bluetooth Proxy
 bluetooth_proxy:
   active: true
