@@ -13,3 +13,6 @@ esphome:
 
 # Enable logging
 logger:
+
+# Wifi provisioning
+captive_portal:
