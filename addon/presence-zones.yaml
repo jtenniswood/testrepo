@@ -1,5 +1,5 @@
 number:
-# Setting ending of zone 1 occupancy
+# Zone 1
   - platform: template
     name: "Zone 1 End"
     id: radar_z1_end
@@ -15,7 +15,7 @@ number:
     icon: "mdi:arrow-collapse-right"
     entity_category: CONFIG
 
-  # Setting ending of zone 2 occupancy
+  # Zone 2
   - platform: template
     name: "Zone 2 End"
     id: radar_z2_end
@@ -31,24 +31,8 @@ number:
     icon: "mdi:arrow-collapse-right"
     entity_category: CONFIG
 
-  # Setting ending of zone 3 occupancy
-  - platform: template
-    name: "Zone 3 End"
-    id: radar_z3_end
-    device_class: distance
-    min_value: 0
-    max_value: 600
-    step: 1
-    mode: box
-    update_interval: never
-    optimistic: true
-    restore_value: true
-    initial_value: 100
-    icon: "mdi:arrow-collapse-right"
-    entity_category: CONFIG
-
 binary_sensor:
-  ## Set Up Radar Zones Based On Distance
+  ## Presence zones
   - platform: template
     name: "Zone 1 Occupancy"
     device_class: occupancy
@@ -65,16 +49,6 @@ binary_sensor:
     icon: mdi:motion-sensor
     lambda: |-
       if ((id(has_target).state) && ((id(radar_z1_end).state < id(detection_distance).state) && (id(detection_distance).state < id(radar_z2_end).state))) {
-        return true;
-      } else {
-        return false;
-      }
-  - platform: template
-    name: "Zone 3 Occupancy"
-    device_class: occupancy
-    icon: mdi:motion-sensor
-    lambda: |-
-      if ((id(has_target).state) && ((id(radar_z2_end).state < id(detection_distance).state) && (id(detection_distance).state < id(radar_z3_end).state))) {
         return true;
       } else {
         return false;
