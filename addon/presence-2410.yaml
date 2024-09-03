@@ -1,4 +1,4 @@
-# Presense Sensor
+# LD2410 Presense Sensor
 uart:
   id: UART2
   rx_pin: GPIO1
