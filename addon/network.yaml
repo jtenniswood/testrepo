@@ -7,7 +7,7 @@ binary_sensor:
 
 
 sensor:
-# Uptime Sensor
+# Uptime
   - platform: uptime
     name: "Uptime Sensor"
     id: uptime_sensor
@@ -41,7 +41,7 @@ text_sensor:
       name: IP Address
       icon: mdi:ip-network
 
-# Uptime Sensor
+# Uptime
   - platform: template
     name: "Uptime"
     id: uptimes
@@ -66,3 +66,9 @@ text_sensor:
       } else {
         return { (String(seconds) +"s").c_str() };
       }
+
+# Esphome Version
+  - platform: version
+    name: Version
+    icon: mdi:package-variant-closed
+    hide_timestamp: true
