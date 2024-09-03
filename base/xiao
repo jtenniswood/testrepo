@@ -1,0 +1,27 @@
+# Designed for Seeedstudio Xiao C3
+esp32:
+  board: seeed_xiao_esp32c3
+  variant: esp32c3
+  framework:
+    type: arduino
+
+# Esphome
+esphome:
+  name: ${name}
+  friendly_name: ${friendly_name}
+  area: ${room}
+
+# Enable logging
+logger:
+
+# Esphome version sensor
+text_sensor:
+  - platform: version
+    name: Version
+    icon: mdi:package-variant-closed
+    hide_timestamp: true
+
+# Dashboard
+web_server:
+  port: 80
+  version: 3
