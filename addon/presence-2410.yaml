@@ -1,8 +1,8 @@
 # LD2410 Presense Sensor
 uart:
   id: UART2
-  rx_pin: GPIO1
-  tx_pin: GPIO2
+  rx_pin: GPIO${rx_pin}
+  tx_pin: GPIO${tx_pin}
   baud_rate: 256000
   data_bits: 8
   stop_bits: 1
