@@ -1,8 +1,8 @@
 number:
 # Zone 1
   - platform: template
-    name: "Zone 1 End"
-    id: radar_z1_end
+    name: "${zone1} Zone End"
+    id: presence_z1_end
     device_class: distance
     min_value: 0
     max_value: 600
@@ -17,8 +17,8 @@ number:
 
   # Zone 2
   - platform: template
-    name: "Zone 2 End"
-    id: radar_z2_end
+    name: "${zone2} Zone End"
+    id: presence_z2_end
     device_class: distance
     min_value: 0
     max_value: 600
@@ -34,21 +34,21 @@ number:
 binary_sensor:
   ## Presence zones
   - platform: template
-    name: "Zone 1 Occupancy"
+    name: "${zone1} Occupancy"
     device_class: occupancy
     icon: mdi:motion-sensor
     lambda: |-
-      if ((id(has_target).state) && (id(detection_distance).state < id(radar_z1_end).state)) {
+      if ((id(has_target).state) && (id(detection_distance).state < id(presence_z1_end).state)) {
         return true;
       } else {
         return false;
       }
   - platform: template
-    name: "Zone 2 Occupancy"
+    name: "${zone2} Occupancy"
     device_class: occupancy
     icon: mdi:motion-sensor
     lambda: |-
-      if ((id(has_target).state) && ((id(radar_z1_end).state < id(detection_distance).state) && (id(detection_distance).state < id(radar_z2_end).state))) {
+      if ((id(has_target).state) && ((id(radar_z1_end).state < id(detection_distance).state) && (id(detection_distance).state < id(presence_z2_end).state))) {
         return true;
       } else {
         return false;
