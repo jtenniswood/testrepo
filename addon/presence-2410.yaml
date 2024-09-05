@@ -9,13 +9,19 @@ uart:
   parity: NONE
 
 
-# Presense Sensor
 ld2410:
   id: my_ld2410
   uart_id: UART2
 
 
-# Online Status
+text_sensor:
+  - platform: ld2410
+    version:
+      name: "Sensor Firmware"
+    mac_address:
+      name: "Sensor Mac Address"
+
+
 binary_sensor:
   - platform: ld2410
     has_target:
@@ -28,7 +34,6 @@ binary_sensor:
       
 
 sensor:
-# Presense Sensor
   - platform: ld2410
     moving_distance:
       name : Moving Distance
@@ -43,7 +48,6 @@ sensor:
       id: detection_distance
 
 
-# Presense Sensor
 switch:
   - platform: ld2410
     bluetooth:
