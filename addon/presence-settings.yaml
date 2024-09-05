@@ -61,20 +61,12 @@ sensor:
 switch:
   - platform: ld2410
     engineering_mode:
-      name: "engineering mode"
-    bluetooth:
-      name: "control bluetooth"
+      name: "Engineering Mode"
 
 number:
   - platform: ld2410
     timeout:
       name: timeout
-    light_threshold:
-      name: light threshold
-    max_move_distance_gate:
-      name: max move distance gate
-    max_still_distance_gate:
-      name: max still distance gate
     g0:
       move_threshold:
         name: g0 move threshold
@@ -129,13 +121,6 @@ button:
       name: "restart"
     query_params:
       name: query params
-
-text_sensor:
-  - platform: ld2410
-    version:
-      name: "firmware version"
-    mac_address:
-      name: "mac address"
 
 select:
   - platform: ld2410
