@@ -102,8 +102,8 @@ switch:
 
 number:
   - platform: ld2410
-    timeout:
-      name: timeout
+#    timeout:
+#      name: timeout
     g0:
       move_threshold:
         name: g0 move threshold
