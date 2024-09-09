@@ -41,6 +41,7 @@ binary_sensor:
     device_class: occupancy
     icon: mdi:motion-sensor
     lambda: |-
+      auto uart_component = static_cast<LD2412 *>(ld2412);
       if ((id(hastarget).state) && (id(detection_distance).state < id(presence_z1_end).state)) {
         return true;
       } else {
