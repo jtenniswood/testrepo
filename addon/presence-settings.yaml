@@ -1,5 +1,5 @@
 sensor:
-  - platform: ld2410
+#  - platform: ld2410
     light:
       name: light
     moving_distance:
