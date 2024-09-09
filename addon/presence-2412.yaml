@@ -35,29 +35,6 @@ binary_sensor:
       - name: "Still Target"
         icon: mdi:motion-sensor
 
-# Zones
-  - platform: template
-    name: "Zone 1 Occupancy"
-    device_class: occupancy
-    icon: mdi:motion-sensor
-    lambda: |-
-      auto uart_component = static_cast<LD2412 *>(ld2412);
-      if ((id(hastarget).state) && (id(detection_distance).state < id(presence_z1_end).state)) {
-        return true;
-      } else {
-        return false;
-      }
-  - platform: template
-    name: "Zone 2 Occupancy"
-    device_class: occupancy
-    icon: mdi:motion-sensor
-    lambda: |-
-      if ((id(hastarget).state) && ((id(presence_z1_end).state < id(detectiondistance).state) && (id(detectiondistance).state < id(presence_z2_end).state))) {
-        return true;
-      } else {
-        return false;
-      }
-
 
 sensor: 
 # Presense Sensor
@@ -90,37 +67,3 @@ button:
     name: "Reboot sensor"
     on_press:
       lambda: 'static_cast<LD2412 *>(ld2412)->reboot();'
-
-
-number:
-# Zone 1
-  - platform: template
-    name: "Zone 1 End"
-    id: presence_z1_end
-    device_class: distance
-    min_value: 0
-    max_value: 600
-    step: 1
-    mode: box
-    update_interval: never
-    optimistic: true
-    restore_value: true
-    initial_value: 200
-    icon: "mdi:arrow-collapse-right"
-    entity_category: CONFIG
-
-  # Zone 2
-  - platform: template
-    name: "Zone 2 End"
-    id: presence_z2_end
-    device_class: distance
-    min_value: 0
-    max_value: 600
-    step: 1
-    mode: box
-    update_interval: never
-    optimistic: true
-    restore_value: true
-    initial_value: 500
-    icon: "mdi:arrow-collapse-right"
-    entity_category: CONFIG
