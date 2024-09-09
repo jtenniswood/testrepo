@@ -51,7 +51,7 @@ binary_sensor:
     device_class: occupancy
     icon: mdi:motion-sensor
     lambda: |-
-      if ((id(hastarget).state) && ((id(presence_z1_end).state < id(detection_distance).state) && (id(detection_distance).state < id(presence_z2_end).state))) {
+      if ((id(hastarget).state) && ((id(presence_z1_end).state < id(detectiondistance).state) && (id(detectiondistance).state < id(presence_z2_end).state))) {
         return true;
       } else {
         return false;
