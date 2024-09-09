@@ -1,5 +1,9 @@
+ld2410:
+  id: my_ld2410
+  uart_id: UART2
+
 sensor:
-#  - platform: ld2410
+  - platform: ld2410
     light:
       name: light
     moving_distance:
@@ -64,6 +68,7 @@ switch:
       name: "Engineering Mode"
 
 number:
+  - platform: ld2410
     timeout:
       name: timeout
     g0:
