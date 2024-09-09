@@ -31,11 +31,6 @@ binary_sensor:
       name: Moving Target
     has_still_target:
       name: Still Target
-      
-switch:
-  - platform: ld2410
-    bluetooth:
-      name: "Bluetooth"
 
 
 sensor:
@@ -101,6 +96,9 @@ switch:
   - platform: ld2410
     engineering_mode:
       name: "Engineering Mode"
+  - platform: ld2410
+    bluetooth:
+      name: "Bluetooth"
 
 number:
   - platform: ld2410
