@@ -104,7 +104,7 @@ number:
     update_interval: never
     optimistic: true
     restore_value: true
-    initial_value: ${zone1_distance}
+    initial_value: 200
     icon: "mdi:arrow-collapse-right"
     entity_category: CONFIG
 
@@ -120,6 +120,6 @@ number:
     update_interval: never
     optimistic: true
     restore_value: true
-    initial_value: ${zone2_distance}
+    initial_value: 500
     icon: "mdi:arrow-collapse-right"
     entity_category: CONFIG
