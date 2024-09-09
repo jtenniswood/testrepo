@@ -14,14 +14,6 @@ ld2410:
   uart_id: UART2
 
 
-text_sensor:
-  - platform: ld2410
-    version:
-      name: "Sensor Firmware"
-    mac_address:
-      name: "Sensor Mac Address"
-
-
 binary_sensor:
   - platform: ld2410
     has_target:
