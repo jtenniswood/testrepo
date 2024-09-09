@@ -64,7 +64,6 @@ switch:
       name: "Engineering Mode"
 
 number:
-#  - platform: ld2410
     timeout:
       name: timeout
     g0:
