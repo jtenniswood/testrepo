@@ -37,7 +37,7 @@ binary_sensor:
 
 # Zones
   - platform: template
-    name: "${zone1} Occupancy"
+    name: "Zone 1 Occupancy"
     device_class: occupancy
     icon: mdi:motion-sensor
     lambda: |-
@@ -47,7 +47,7 @@ binary_sensor:
         return false;
       }
   - platform: template
-    name: "${zone2} Occupancy"
+    name: "Zone 2 Occupancy"
     device_class: occupancy
     icon: mdi:motion-sensor
     lambda: |-
@@ -94,7 +94,7 @@ button:
 number:
 # Zone 1
   - platform: template
-    name: "Zone 1 End (${zone1})"
+    name: "Zone 1 End"
     id: presence_z1_end
     device_class: distance
     min_value: 0
@@ -110,7 +110,7 @@ number:
 
   # Zone 2
   - platform: template
-    name: "Zone 2 End (${zone2})"
+    name: "Zone 2 End"
     id: presence_z2_end
     device_class: distance
     min_value: 0
