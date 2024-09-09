@@ -32,6 +32,11 @@ binary_sensor:
     has_still_target:
       name: Still Target
       
+switch:
+  - platform: ld2410
+    bluetooth:
+      name: "Bluetooth"
+
 
 sensor:
   - platform: ld2410
@@ -46,16 +51,6 @@ sensor:
     detection_distance:
       name: Detection Distance
       id: detection_distance
-
-
-switch:
-  - platform: ld2410
-    bluetooth:
-      name: "Bluetooth"
-
-
-sensor:
-  - platform: ld2410
     g0:
       move_energy:
         name: g0 move energy
