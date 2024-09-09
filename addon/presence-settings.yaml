@@ -3,23 +3,15 @@ switch:
     engineering_mode:
       name: "Engineering Mode"
 
-number.set:
-  - platform: ld2410
-    g0:
-      move_threshold:
-        name: G0 Move Threshold
-        value: 99
-      still_threshold:
-        name: G0 Still Threshold
-        value: 99
-
 number:
   - platform: ld2410
     g0:
       move_threshold:
         name: G0 Move Threshold
+        value: 99
       still_threshold:
         name: G0 Still Threshold
+        value: 99
     g1:
       move_threshold:
         name: G1 Move Threshold
