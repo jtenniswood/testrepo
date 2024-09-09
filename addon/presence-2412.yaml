@@ -35,6 +35,28 @@ binary_sensor:
       - name: "Still Target"
         icon: mdi:motion-sensor
 
+# Zones
+  - platform: template
+    name: "${zone1} Occupancy"
+    device_class: occupancy
+    icon: mdi:motion-sensor
+    lambda: |-
+      if ((id(has_target).state) && (id(detection_distance).state < id(presence_z1_end).state)) {
+        return true;
+      } else {
+        return false;
+      }
+  - platform: template
+    name: "${zone2} Occupancy"
+    device_class: occupancy
+    icon: mdi:motion-sensor
+    lambda: |-
+      if ((id(has_target).state) && ((id(presence_z1_end).state < id(detection_distance).state) && (id(detection_distance).state < id(presence_z2_end).state))) {
+        return true;
+      } else {
+        return false;
+      }
+
 
 sensor: 
 # Presense Sensor
@@ -101,26 +123,3 @@ number:
     initial_value: ${zone2_distance}
     icon: "mdi:arrow-collapse-right"
     entity_category: CONFIG
-
-binary_sensor:
-  ## Presence zones
-  - platform: template
-    name: "${zone1} Occupancy"
-    device_class: occupancy
-    icon: mdi:motion-sensor
-    lambda: |-
-      if ((id(has_target).state) && (id(detection_distance).state < id(presence_z1_end).state)) {
-        return true;
-      } else {
-        return false;
-      }
-  - platform: template
-    name: "${zone2} Occupancy"
-    device_class: occupancy
-    icon: mdi:motion-sensor
-    lambda: |-
-      if ((id(has_target).state) && ((id(presence_z1_end).state < id(detection_distance).state) && (id(detection_distance).state < id(presence_z2_end).state))) {
-        return true;
-      } else {
-        return false;
-      }
