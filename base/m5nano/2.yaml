@@ -6,3 +6,15 @@ esp32:
     type: esp-idf
     version: 5.3.1
     platform_version: 6.8.1
+
+# Esphome
+esphome:
+  name: ${name}
+  friendly_name: ${friendly_name}
+  area: ${room}
+
+# Enable logging
+logger:
+
+# Wifi provisioning
+captive_portal:
