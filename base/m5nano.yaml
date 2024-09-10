@@ -1,19 +1,14 @@
 # Designed for M5NanoC6
 esp32:
   board: esp32-c6-devkitc-1
+  flash_size: 8MB
   variant: esp32c6
   framework:
     type: esp-idf
-    version: 5.1.2
-    platform_version: 6.5.0
-
-external_components:
-  - source:
-      type: git
-      url: https://github.com/ssieb/esphome
-      ref: adc
-    components: [ adc ]
-    refresh: 1min
+    version: "5.3.0"
+    platform_version: 6.8.1
+    sdkconfig_options:
+      CONFIG_ESPTOOLPY_FLASHSIZE_8MB: y
 
 # Esphome
 esphome:
