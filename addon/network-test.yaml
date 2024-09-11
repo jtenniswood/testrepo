@@ -31,3 +31,10 @@ sensor:
     icon: mdi:wifi
     entity_category: "diagnostic"
     device_class: ""
+
+text_sensor:
+# Ip Address
+  - platform: wifi_info
+    ip_address:
+      name: IP Address
+      icon: mdi:ip-network
