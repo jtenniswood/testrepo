@@ -39,6 +39,14 @@ text_sensor:
       name: IP Address
       icon: mdi:ip-network
 
+  - platform: template
+    name: Uptime
+    update_interval: 1s
+    lambda: |-
+      auto s = millis() / 1000;
+      return str_snprintf("%02d:%02d:%02d:%02d", 11, s / 86400, s / 3600 % 24, s / 60 % 60, s % 60);
+
+
 # Esphome Version
   - platform: version
     name: Version
