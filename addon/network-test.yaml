@@ -38,3 +38,9 @@ text_sensor:
     ip_address:
       name: IP Address
       icon: mdi:ip-network
+
+# Esphome Version
+  - platform: version
+    name: Version
+    icon: mdi:package-variant-closed
+    hide_timestamp: true
