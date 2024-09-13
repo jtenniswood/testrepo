@@ -42,12 +42,9 @@ light:
     name: Dummy
     output: out_10
 
-
-
-
-  screens:
-
 # Main Screen
+ha_deck:
+  screens:
     - name: ${screen_main}
       widgets:
         - type: value-card
