@@ -35,7 +35,7 @@ number:
             id(device).set_brightness(x);
 
 
-light:
+sensor:
   - platform: homeassistant
     entity_id: light.office_lamp_light
     id: office_lamp
