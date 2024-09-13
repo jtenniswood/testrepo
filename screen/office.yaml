@@ -35,6 +35,12 @@ number:
             id(device).set_brightness(x);
 
 
+light:
+  - platform: homeassistant
+    entity_id: light.office_lamp_light
+    id: office_lamp
+
+
 # Main Screen
 ha_deck:
   screens:
@@ -56,7 +62,7 @@ ha_deck:
           toggle: true
           enabled: return true;
           checked: |-
-            return id(light.office_lamp_light).current_values.is_on();
+            return id(office_lamp).current_values.is_on();
           on_turn_on:
             - homeassistant.service:
                 service: light.turn_on
