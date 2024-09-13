@@ -35,13 +35,6 @@ number:
             id(device).set_brightness(x);
 
 
-# Dummy Light
-light:
-  - platform: monochromatic
-    id: dummy_light
-    name: Dummy
-    output: out_10
-
 # Main Screen
 ha_deck:
   screens:
@@ -62,8 +55,8 @@ ha_deck:
           icon: 󰝩
           toggle: true
           enabled: return true;
- #         checked: |-
- #           return id(dummy_light).current_values.is_on();
+          checked: |-
+            return id(light.office_lamp_light).current_values.is_on();
           on_turn_on:
             - homeassistant.service:
                 service: light.turn_on
