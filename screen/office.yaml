@@ -4,41 +4,6 @@ substitutions:
   SCREEN_KITCHEN: sliders
   SCREEN_LED: led
 
-esphome:
-  name: ha-deck1
-  friendly_name: ha-deck1
-  platformio_options:
-    board_upload.maximum_ram_size: 327680
-    board_upload.maximum_size: 16777216
-
-
-esp32:
-  board: esp32-s3-devkitc-1
-  framework:
-    type: arduino
-  flash_size: 16MB
-
-# Enable logging
-logger:
-
-api:
-
-ota:
-  - platform: esphome
-
-wifi:
-  ssid: !secret wifi_ssid
-  password: !secret wifi_password
-
-external_components:
-  - source:
-      type: git
-      url: https://github.com/strange-v/ha_deck
-      ref: main
-    components: [ hd_device_sc01_plus, ha_deck ]
-
-web_server:
-  port: 80
 
 time:
   - platform: sntp
@@ -102,9 +67,6 @@ light:
     name: Dummy
     output: out_10
 
-hd_device_sc01_plus:
-  id: device
-  brightness: 75
 
 ha_deck:
   id: deck
