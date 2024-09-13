@@ -1,4 +1,9 @@
-
+# Screens
+substitutions:
+  SCREEN_MAIN: "master"
+  SCREEN_ROOMS: "rooms"
+  SCREEN_KITCHEN: "sliders"
+  SCREEN_LED: "led"
 
 # Dummy Sensors
 number:
