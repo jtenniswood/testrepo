@@ -13,6 +13,7 @@ esphome:
   platformio_options:
     board_upload.maximum_ram_size: 327680
     board_upload.maximum_size: 16777216
+    board_build.arduino.memory_type: qio_opi
 
 # Over the Air Updates
 ota:
