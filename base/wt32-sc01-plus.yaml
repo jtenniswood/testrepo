@@ -33,11 +33,25 @@ external_components:
     components: [ hd_device_sc01_plus, ha_deck ]
 
 # Screen
-output:
-  - platform: ledc
-    pin: 10
-    id: out_10
+#output:
+#  - platform: ledc
+#    pin: 10
+#    id: out_10
 
 hd_device_sc01_plus:
   id: device
-  brightness: 75
+  brightness: 100
+
+ha_deck:
+  id: deck
+  main_screen: ${screen_main}
+  inactivity:
+    period: 60
+    blank_screen: true
+  on_inactivity_change:
+    lambda:  |-
+      if (x) {
+        id(device).set_brightness(id(inactive_screen_brightness).state);
+      } else {
+        id(device).set_brightness(id(screen_brightness).state);
+      }
