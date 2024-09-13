@@ -1,3 +1,7 @@
+
+
+
+
 # Screens
 substitutions:
   screen_main: "master"
@@ -37,8 +41,11 @@ number:
 
 sensor:
   - platform: homeassistant
-    entity_id: light.office_lamp_light
     id: office_lamp
+    entity_id: light.office_lamp_light
+    attribute: brightness
+    name: Lamp
+    internal: true
 
 
 # Main Screen
