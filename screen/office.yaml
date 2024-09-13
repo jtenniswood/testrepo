@@ -239,16 +239,16 @@ ha_deck:
             - lambda: |-
                 id(deck).switch_screen("$SCREEN_MAIN");
 
-        - type: button
-          position: 8, 216
-          text: "Hallway"
-          icon: 󰷺
-          enabled: |-
-            return true;
-          on_click:
-            then:
-            - lambda: |-
-                id(deck).switch_screen("$SCREEN_MAIN");
+#        - type: button
+#          position: 8, 216
+#          text: "Hallway"
+#          icon: 󰷺
+#          enabled: |-
+#            return true;
+#          on_click:
+#            then:
+#            - lambda: |-
+#                id(deck).switch_screen("$SCREEN_MAIN");
 
 
     - name: ${SCREEN_LED}
