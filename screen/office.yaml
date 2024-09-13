@@ -4,6 +4,55 @@ substitutions:
   SCREEN_KITCHEN: sliders
   SCREEN_LED: led
 
+esphome:
+  name: ha-deck1
+  friendly_name: ha-deck1
+  platformio_options:
+    board_upload.maximum_ram_size: 327680
+    board_upload.maximum_size: 16777216
+
+
+esp32:
+  board: esp32-s3-devkitc-1
+  framework:
+    type: arduino
+  flash_size: 16MB
+
+# Enable logging
+logger:
+
+api:
+
+ota:
+  - platform: esphome
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+external_components:
+  - source:
+      type: git
+      url: https://github.com/strange-v/ha_deck
+      ref: main
+    components: [ hd_device_sc01_plus, ha_deck ]
+
+web_server:
+  port: 80
+
+time:
+  - platform: sntp
+    id: sntp_time
+    timezone: Europe/London
+    on_time:
+      - cron: '* * * * * *'
+        then:
+          lambda: |-
+            char buff[10] = "-";
+            auto time = id(sntp_time).now();
+            if (time.is_valid())
+              sprintf(buff, "%02d:%02d:%02d", time.hour, time.minute, time.second);
+            id(local_time).set_value(std::string(buff));
 
 number:
   - platform: template
@@ -12,12 +61,13 @@ number:
     min_value: 0
     max_value: 100
     step: 5
-    initial_value: 75
+    initial_value: 100
     restore_value: true
     set_action:
       - lambda: |-
           if (!id(deck).get_inactivity())
             id(device).set_brightness(x);
+
   - platform: template
     id: inactive_screen_brightness
     name: Inactive screen brightness
@@ -30,6 +80,7 @@ number:
       - lambda: |-
           if (id(deck).get_inactivity())
             id(device).set_brightness(x);
+
   - platform: template
     id: dummy_temperature_sensor
     name: Dummy Temperature
@@ -50,7 +101,10 @@ light:
     id: dummy_light
     name: Dummy
     output: out_10
-    
+
+hd_device_sc01_plus:
+  id: device
+  brightness: 75
 
 ha_deck:
   id: deck
@@ -65,7 +119,7 @@ ha_deck:
       } else {
         id(device).set_brightness(id(screen_brightness).state);
       }
-      
+
   screens:
     - name: ${SCREEN_MAIN}
       widgets:
@@ -73,7 +127,7 @@ ha_deck:
           id: local_time
           position: 8, 8
           dimensions: 228x96
-          text: "Kyiv (Ukraine)"
+          text: "London (England)"
           enabled: return true;
           on_click:
             - logger.log: "Time clicked"
@@ -136,9 +190,6 @@ ha_deck:
           enabled: return true;
           on_click:
             lambda: id(deck).switch_screen("$SCREEN_LED");
-
-
-
     - name: ${SCREEN_ROOMS}
       widgets:
         - type: button
@@ -230,9 +281,6 @@ ha_deck:
             then:
             - lambda: |-
                 id(deck).switch_screen("$SCREEN_MAIN");
-
-
-
     - name: ${SCREEN_LED}
       widgets:
         - type: button
