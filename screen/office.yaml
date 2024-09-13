@@ -1,11 +1,12 @@
 # Screens
 substitutions:
-  SCREEN_MAIN: "master"
-  SCREEN_ROOMS: "rooms"
-  SCREEN_KITCHEN: "sliders"
-  SCREEN_LED: "led"
+  screen_main: "master"
+  screen_rooms: "rooms"
+  screen_kitchen: "sliders"
+  screen_led: "led"
 
-# Dummy Sensors
+
+# Brightness Control
 number:
   - platform: template
     id: screen_brightness
@@ -33,6 +34,7 @@ number:
           if (id(deck).get_inactivity())
             id(device).set_brightness(x);
 
+# Dummy Sensor
   - platform: template
     id: dummy_temperature_sensor
     name: Dummy Temperature
@@ -48,11 +50,11 @@ number:
 
 
 # Dummy Light
-light:
-  - platform: monochromatic
-    id: dummy_light
-    name: Dummy
-    output: out_10
+#light:
+#  - platform: monochromatic
+#    id: dummy_light
+#    name: Dummy
+#    output: out_10
 
 
 
@@ -74,7 +76,7 @@ ha_deck:
 
   screens:
 
-
+# Main Screen
     - name: ${SCREEN_MAIN}
       widgets:
         - type: value-card
@@ -139,7 +141,7 @@ ha_deck:
             lambda: id(deck).switch_screen("$SCREEN_LED");
 
 
-
+# Rooms Screen
     - name: ${SCREEN_ROOMS}
       widgets:
         - type: button
@@ -241,7 +243,7 @@ ha_deck:
                 id(deck).switch_screen("$SCREEN_MAIN");
 
 
-
+# Brightness Screen
     - name: ${SCREEN_LED}
       widgets:
         - type: button
