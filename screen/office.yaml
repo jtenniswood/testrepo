@@ -4,6 +4,12 @@ substitutions:
   SCREEN_KITCHEN: sliders
   SCREEN_LED: led
 
+output:
+  - platform: ledc
+    pin: 10
+    id: out_10
+
+
 # Dummy Sensors
 number:
   - platform: template
