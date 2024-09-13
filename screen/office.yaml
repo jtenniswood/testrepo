@@ -1,7 +1,3 @@
-
-
-
-
 # Screens
 substitutions:
   screen_main: "master"
@@ -39,6 +35,7 @@ number:
             id(device).set_brightness(x);
 
 
+# Sensors
 sensor:
   - platform: homeassistant
     id: office_lamp
@@ -68,8 +65,8 @@ ha_deck:
           icon: 󰝩
           toggle: true
           enabled: return true;
-          checked: |-
-            return (id(office_lamp).state == "on") ? id(office_lamp).state : 0;
+#          checked: |-
+#            return (id(office_lamp).state == "on") ? id(office_lamp_brightness).state : 0;
           on_turn_on:
             - homeassistant.service:
                 service: light.turn_on
