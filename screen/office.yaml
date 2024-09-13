@@ -46,7 +46,11 @@ number:
     mode: box
 
 
-
+sensor:
+  - platform: homeassistant
+    id: office_lamp
+    name: "Office Lamp"
+    entity_id: light.office_lamp_light
 
 
 # Dummy Light
@@ -125,7 +129,7 @@ ha_deck:
           toggle: true
           enabled: return true;
           checked: |-
-            return id(light.office_lamp_light).current_values.is_on();
+            return id(office_lamp).current_values.is_on();
           on_click:
             - homeassistant.service:
                 service: light.toggle
