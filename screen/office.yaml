@@ -66,7 +66,7 @@ sensor:
 
 ha_deck:
   id: deck
-  main_screen: ${SCREEN_MAIN}
+  main_screen: ${screen_main}
   inactivity:
     period: 60
     blank_screen: true
@@ -81,7 +81,7 @@ ha_deck:
   screens:
 
 # Main Screen
-    - name: ${SCREEN_MAIN}
+    - name: ${screen_main}
       widgets:
         - type: value-card
           id: local_time
@@ -118,7 +118,7 @@ ha_deck:
           enabled: return true;
           on_click:
             lambda: |-
-                id(deck).switch_screen("$SCREEN_ROOMS");
+                id(deck).switch_screen("$screen_rooms");
           on_long_press:
             - logger.log: "Rooms long pressed"
 
@@ -142,11 +142,11 @@ ha_deck:
           icon: 󰖨
           enabled: return true;
           on_click:
-            lambda: id(deck).switch_screen("$SCREEN_LED");
+            lambda: id(deck).switch_screen("$screen_led");
 
 
 # Rooms Screen
-    - name: ${SCREEN_ROOMS}
+    - name: ${screen_rooms}
       widgets:
         - type: button
           position: 8, 8
@@ -156,7 +156,7 @@ ha_deck:
           on_click:
             then:
             - lambda: |-
-                id(deck).switch_screen("$SCREEN_MAIN");
+                id(deck).switch_screen("$screen_main");
 
         - type: button
           position: 126, 8
@@ -167,7 +167,7 @@ ha_deck:
           on_click:
             then:
             - lambda: |-
-                id(deck).switch_screen("$SCREEN_MAIN");
+                id(deck).switch_screen("$screen_main");
 
         - type: button
           position: 244, 8
@@ -178,7 +178,7 @@ ha_deck:
           on_click:
             then:
             - lambda: |-
-                id(deck).switch_screen("$SCREEN_MAIN");
+                id(deck).switch_screen("$screen_main");
 
         - type: button
           position: 362, 8
@@ -189,7 +189,7 @@ ha_deck:
           on_click:
             then:
             - lambda: |-
-                id(deck).switch_screen("$SCREEN_MAIN");
+                id(deck).switch_screen("$screen_main");
 
         - type: button
           position: 8, 112
@@ -200,7 +200,7 @@ ha_deck:
           on_click:
             then:
             - lambda: |-
-                id(deck).switch_screen("$SCREEN_MAIN");
+                id(deck).switch_screen("$screen_main");
 
         - type: button
           position: 126, 112
@@ -211,7 +211,7 @@ ha_deck:
           on_click:
             then:
             - lambda: |-
-                id(deck).switch_screen("$SCREEN_MAIN");
+                id(deck).switch_screen("$screen_main");
 
         - type: button
           position: 244, 112
@@ -222,7 +222,7 @@ ha_deck:
           on_click:
             then:
             - lambda: |-
-                id(deck).switch_screen("$SCREEN_MAIN");
+                id(deck).switch_screen("$screen_main");
 
         - type: button
           position: 362, 112
@@ -233,7 +233,7 @@ ha_deck:
           on_click:
             then:
             - lambda: |-
-                id(deck).switch_screen("$SCREEN_MAIN");
+                id(deck).switch_screen("$screen_main");
 
         - type: button
           position: 8, 216
@@ -244,11 +244,11 @@ ha_deck:
           on_click:
             then:
             - lambda: |-
-                id(deck).switch_screen("$SCREEN_MAIN");
+                id(deck).switch_screen("$screen_main");
 
 
 # Brightness Screen
-    - name: ${SCREEN_LED}
+    - name: ${screen_led}
       widgets:
         - type: button
           position: 0, 0
@@ -256,7 +256,7 @@ ha_deck:
           icon: 󰅁
           enabled: return true;
           on_click:
-            - lambda: id(deck).switch_screen("$SCREEN_MAIN");
+            - lambda: id(deck).switch_screen("$screen_main");
 
         - type: slider
           position: 200, 8
