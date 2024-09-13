@@ -72,6 +72,7 @@ ha_deck:
         id(device).set_brightness(id(screen_brightness).state);
       }
 
+
   screens:
     - name: ${SCREEN_MAIN}
       widgets:
