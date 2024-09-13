@@ -4,6 +4,7 @@ substitutions:
   SCREEN_KITCHEN: sliders
   SCREEN_LED: led
 
+
 number:
   - platform: template
     id: screen_brightness
@@ -49,10 +50,7 @@ light:
     id: dummy_light
     name: Dummy
     output: out_10
-
-hd_device_sc01_plus:
-  id: device
-  brightness: 75
+    
 
 ha_deck:
   id: deck
@@ -67,6 +65,7 @@ ha_deck:
       } else {
         id(device).set_brightness(id(screen_brightness).state);
       }
+      
   screens:
     - name: ${SCREEN_MAIN}
       widgets:
@@ -137,6 +136,9 @@ ha_deck:
           enabled: return true;
           on_click:
             lambda: id(deck).switch_screen("$SCREEN_LED");
+
+
+
     - name: ${SCREEN_ROOMS}
       widgets:
         - type: button
@@ -228,6 +230,9 @@ ha_deck:
             then:
             - lambda: |-
                 id(deck).switch_screen("$SCREEN_MAIN");
+
+
+
     - name: ${SCREEN_LED}
       widgets:
         - type: button
