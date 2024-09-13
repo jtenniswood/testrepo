@@ -206,16 +206,16 @@ ha_deck:
             - lambda: |-
                 id(deck).switch_screen("$SCREEN_MAIN");
 
-        - type: button
-          position: 126, 112
-          text: "Bathroom"
-          icon: 󰦠
-          enabled: |-
-            return true;
-          on_click:
-            then:
-            - lambda: |-
-                id(deck).switch_screen("$SCREEN_MAIN");
+#        - type: button
+#          position: 126, 112
+#          text: "Bathroom"
+#          icon: 󰦠
+#          enabled: |-
+#            return true;
+#          on_click:
+#            then:
+#            - lambda: |-
+#                id(deck).switch_screen("$SCREEN_MAIN");
 
         - type: button
           position: 244, 112
