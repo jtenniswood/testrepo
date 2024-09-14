@@ -41,7 +41,7 @@ sensor:
 
 binary_sensor:
   - platform: homeassistant
-    id: dummy_light
+    id: office_lamp
     entity_id: light.office_lamp_light
 
 
@@ -82,13 +82,27 @@ ha_deck:
           on_click:
             - logger.log: "Time clicked"
             
-        # Favourite
+
+        # Light
         - type: button
           position: 8, 112
-          text: "Favorite"
-          icon: 󰋑
-          visible: |-
-            return true;
+          text: Light
+          icon: 󰝩
+          toggle: true
+          enabled: return true;
+          checked: |-
+            return id(office_lamp).state;
+          on_turn_on:
+            - homeassistant.service:
+                service: light.turn_on
+                data:
+                  entity_id: light.office_lamp_light
+          on_turn_off:
+            - homeassistant.service:
+                service: light.turn_off
+                data:
+                  entity_id: light.office_lamp_light
+
 
         # Temperature
         - type: value-card
@@ -112,7 +126,7 @@ ha_deck:
           toggle: true
           enabled: return true;
           checked: |-
-            return id(dummy_light).state;
+            return id(office_light).state;
           on_turn_on:
             - homeassistant.service:
                 service: light.turn_on
