@@ -41,8 +41,8 @@ sensor:
 
 binary_sensor:
   - platform: homeassistant
-    id: office_lamp
-    entity_id: light.office_lamp_light
+    id: office_feature_lights
+    entity_id: light.office_feature_lights
 
 
 #output:
@@ -91,17 +91,17 @@ ha_deck:
           toggle: true
           enabled: return true;
           checked: |-
-            return id(office_lamp).state;
+            return id(office_feature_lights).state;
           on_turn_on:
             - homeassistant.service:
                 service: light.turn_on
                 data:
-                  entity_id: light.office_lamp_light
+                  entity_id: light.office_feature_lights
           on_turn_off:
             - homeassistant.service:
                 service: light.turn_off
                 data:
-                  entity_id: light.office_lamp_light
+                  entity_id: light.office_feature_lights
 
 
         # Temperature
@@ -126,17 +126,17 @@ ha_deck:
           toggle: true
           enabled: return true;
           checked: |-
-            return id(office_light).state;
+            return id(office_feature_lights).state;
           on_turn_on:
             - homeassistant.service:
                 service: light.turn_on
                 data:
-                  entity_id: light.office_lamp_light
+                  entity_id: light.office_feature_lights
           on_turn_off:
             - homeassistant.service:
                 service: light.turn_off
                 data:
-                  entity_id: light.office_lamp_light
+                  entity_id: light.office_feature_lights
           
 
         # Screen Brightness
