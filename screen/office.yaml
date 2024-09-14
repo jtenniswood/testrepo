@@ -187,7 +187,7 @@ ha_deck:
           min: 0
           max: 255
           value: |-
-            return (id(office_storage).state == "on") ? id(office_storage).state : 0;
+            return (id(office_storage).state == "on") ? id(office_storage_brightness).state : 0;
           on_change:
             homeassistant.service:
               service: light.turn_on
