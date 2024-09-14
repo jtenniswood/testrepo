@@ -32,9 +32,11 @@ number:
           if (id(deck).get_inactivity())
             id(device).set_brightness(x);
 
+
 sensor:
+# Temperature Sensor
   - platform: homeassistant
-    id: dummy_temperature_sensor
+    id: outdoor_temperature_sensor
     entity_id: sensor.outdoor_temperature
 
 
@@ -70,6 +72,8 @@ ha_deck:
   screens:
     - name: ${SCREEN_MAIN}
       widgets:
+
+        # Time
         - type: value-card
           id: local_time
           position: 8, 8
@@ -78,7 +82,8 @@ ha_deck:
           enabled: return true;
           on_click:
             - logger.log: "Time clicked"
-
+            
+        # Favourite
         - type: button
           position: 8, 112
           text: "Favorite"
@@ -86,8 +91,9 @@ ha_deck:
           visible: |-
             return true;
 
+        # Temperature
         - type: value-card
-          id: dummy_temperature
+          id: outdoor_temperature
           position: 126, 112
           text: Outside
           icon: 󰔏
@@ -98,6 +104,7 @@ ha_deck:
             sprintf(buff, "%.1f", id(dummy_temperature_sensor).state);
             return std::string(buff);
 
+        # Light
         - type: button
           position: 8, 216
           text: Dummy
@@ -124,6 +131,7 @@ ha_deck:
           #     data:
           #       entity_id: light.living_room_light
 
+        # Screen Brightness
         - type: button
           position: 126, 216
           text: Brightness
