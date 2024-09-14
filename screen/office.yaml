@@ -59,8 +59,8 @@ output:
 
 sensor:
   - platform: homeassistant
-    id: light.office_lamp_light
-    name: Dummy
+    id: dummy_light
+    entity_id: light.office_lamp_light
 
 
 
