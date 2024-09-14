@@ -40,9 +40,9 @@ sensor:
     entity_id: sensor.outdoor_temperature
 
 # This doesn't work, the code expects an on/off
-#  - platform: homeassistant
-#    id: dummy_light
-#    entity_id: light.office_lamp_light
+  - platform: homeassistant
+    id: dummy_light
+    entity_id: light.office_lamp_light
 
 
 output:
