@@ -50,7 +50,7 @@ light:
   - platform: monochromatic
     id: dummy_light
     name: Dummy
-    output: out_10
+#    output: out_10
 
 
 
@@ -104,6 +104,25 @@ ha_deck:
             sprintf(buff, "%.1f", id(outdoor_temperature_sensor).state);
             return std::string(buff);
 
+#        # Light
+#        - type: button
+#          position: 8, 216
+#          text: Dummy
+#          icon: 󰝩
+#          toggle: true
+#          checked: |-
+#          enabled: return true;
+#            return id(dummy_light).current_values.is_on();
+#          on_turn_on:
+#            - light.turn_on:
+#                id: dummy_light
+#                brightness: 100%
+#          on_turn_off:
+#            - light.turn_off:
+#                id: dummy_light
+
+
+
         # Light
         - type: button
           position: 8, 216
@@ -120,16 +139,19 @@ ha_deck:
           on_turn_off:
             - light.turn_off:
                 id: dummy_light
-          # on_turn_on:
-          #   homeassistant.service:
-          #     service: light.turn_on
-          #     data:
-          #       entity_id: light.living_room_light
-          # on_turn_off:
-          #   homeassistant.service:
-          #     service: light.turn_off
-          #     data:
-          #       entity_id: light.living_room_light
+          on_turn_on:
+            - homeassistant.service:
+              service: light.turn_on
+              data:
+                entity_id: light.office_lamp_light
+          on_turn_off:
+            - homeassistant.service:
+              service: light.turn_off
+              data:
+                entity_id: light.office_lamp_light
+
+
+          
 
         # Screen Brightness
         - type: button
