@@ -184,7 +184,7 @@ ha_deck:
           dimensions: 100x304
           text: Brightness
           min: 0
-          max: 255
+          max: 100
           value: |-
             return (id(office_storage).state == "on") ? id(office_storage_brightness).state : 0;
           on_change:
