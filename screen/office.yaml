@@ -39,6 +39,11 @@ sensor:
     id: outdoor_temperature_sensor
     entity_id: sensor.outdoor_temperature
 
+# Light
+  - platform: homeassistant
+    id: dummy_light
+    entity_id: light.office_lamp_light
+
 
 output:
   - platform: ledc
@@ -46,11 +51,13 @@ output:
     id: out_10
 
 
-light:
-  - platform: monochromatic
-    id: dummy_light
-    name: Dummy
-    output: out_10
+# light:
+#  - platform: monochromatic
+#    id: dummy_light
+#    name: Dummy
+#    output: out_10
+
+
 
 
 
