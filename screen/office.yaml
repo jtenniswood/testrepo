@@ -133,12 +133,13 @@ ha_deck:
         # Light
         - type: button
           position: 8, 216
-          text: Dummy
+          text: Light
           icon: 󰝩
           toggle: true
-#          enabled: return true;
-#          checked: |-
-#            return id(dummy_light).current_values.is_on();
+          enabled: return true;
+          checked: |-
+            return id((light.office_lamp_light).state);
+#            return id(light.office_lamp_light).current_values.is_on();
           on_turn_on:
             - homeassistant.service:
                 service: light.turn_on
