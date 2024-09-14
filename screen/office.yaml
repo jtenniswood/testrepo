@@ -39,12 +39,7 @@ sensor:
     id: outdoor_temperature_sensor
     entity_id: sensor.outdoor_temperature
 
-  - platform: homeassistant
-    id: office_storage_brightness
-    entity_id: light.office_storage
-    attribute: brightness
-    name: Office Storage Brightness
-    internal: true
+
 
 
 binary_sensor:
@@ -59,6 +54,10 @@ binary_sensor:
     id: office_storage
     entity_id: light.office_storage
 
+  # 3d Printer
+  - platform: homeassistant
+    id: 3d_printer_power
+    entity_id: switch.office_3d_printer_power
     
 
 
