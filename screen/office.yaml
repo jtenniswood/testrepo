@@ -34,15 +34,20 @@ number:
             id(device).set_brightness(x);
 
 
-  - platform: template
+#  - platform: template
+#    name: Dummy Temperature
+#    id: dummy_temperature_sensor
+#    min_value: -10
+#    max_value: 30
+#    step: 0.5
+#    initial_value: 20.2
+#    optimistic: true
+#    mode: box
+
+sensor:
+  - platform: homeassistant
     id: dummy_temperature_sensor
-    name: Dummy Temperature
-    min_value: -10
-    max_value: 30
-    step: 0.5
-    initial_value: 20.2
-    optimistic: true
-    mode: box
+    entity_id: sensor.outdoor_temperature
 
 
 output:
