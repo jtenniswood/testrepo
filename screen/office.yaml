@@ -19,6 +19,7 @@ number:
           if (!id(deck).get_inactivity())
             id(device).set_brightness(x);
 
+light:
   - platform: template
     id: inactive_screen_brightness
     name: Screen Inactive
