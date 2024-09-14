@@ -40,10 +40,10 @@ sensor:
     entity_id: sensor.outdoor_temperature
 
   - platform: homeassistant
-    id: office_storage
+    id: office_storage_brightness
     entity_id: light.office_storage
     attribute: brightness
-    name: Office Storage
+    name: Office Storage Brightness
     internal: true
 
 
@@ -55,10 +55,9 @@ binary_sensor:
     entity_id: light.office_feature_lights
 
   # Office Storage Lights
-#  - platform: homeassistant
-#    id: office_storage
-#    entity_id: light.office_storage
-#    attribute: brightness
+  - platform: homeassistant
+    id: office_storage
+    entity_id: light.office_storage
 
     
 
