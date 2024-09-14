@@ -44,13 +44,7 @@ binary_sensor:
     id: office_feature_lights
     entity_id: light.office_feature_lights
 
-
-#output:
-#  - platform: ledc
-#    pin: 10
-#    id: out_10
-
-
+    
 
 
 ha_deck:
@@ -83,10 +77,10 @@ ha_deck:
             - logger.log: "Time clicked"
             
 
-        # Light
+        # Storage Light
         - type: button
           position: 8, 112
-          text: Light
+          text: Storage
           icon: 󰝩
           toggle: true
           enabled: return true;
@@ -96,12 +90,12 @@ ha_deck:
             - homeassistant.service:
                 service: light.turn_on
                 data:
-                  entity_id: light.office_feature_lights
+                  entity_id: light.light.office_storage
           on_turn_off:
             - homeassistant.service:
                 service: light.turn_off
                 data:
-                  entity_id: light.office_feature_lights
+                  entity_id: light.light.office_storage
 
 
         # Temperature
@@ -118,10 +112,10 @@ ha_deck:
             return std::string(buff);
 
 
-        # Light
+        # Feature Lighting
         - type: button
           position: 8, 216
-          text: Light
+          text: Feature
           icon: 󰝩
           toggle: true
           enabled: return true;
