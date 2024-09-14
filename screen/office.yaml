@@ -51,16 +51,11 @@ output:
     id: out_10
 
 
-#light:
-#  - platform: monochromatic
-#    id: dummy_light
-#    name: Dummy
-#    output: out_10
-
-sensor:
-  - platform: homeassistant
+light:
+  - platform: monochromatic
     id: dummy_light
-    entity_id: light.office_lamp_light
+    name: Dummy
+    output: out_10
 
 
 
