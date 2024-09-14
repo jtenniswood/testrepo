@@ -139,8 +139,7 @@ ha_deck:
           toggle: true
           enabled: return true;
           checked: |-
-            return id((light.office_lamp_light).state);
-#            return id(light.office_lamp_light).current_values.is_on();
+            return id(light.office_lamp_light).current_values.is_on();
           on_turn_on:
             - homeassistant.service:
                 service: light.turn_on
