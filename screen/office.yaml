@@ -138,7 +138,7 @@ ha_deck:
           toggle: true
           enabled: return true;
           checked: |-
-            return id(dummy_light).state.is_on();
+            return id(dummy_light).state;
           on_turn_on:
             - homeassistant.service:
                 service: light.turn_on
