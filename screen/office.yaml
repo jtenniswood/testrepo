@@ -50,7 +50,7 @@ light:
   - platform: monochromatic
     id: dummy_light
     name: Dummy
-#    output: out_10
+    output: out_10
 
 
 
