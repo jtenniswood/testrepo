@@ -8,7 +8,7 @@ substitutions:
 number:
   - platform: template
     id: screen_brightness
-    name: Active screen brightness
+    name: Screen Brightness
     min_value: 0
     max_value: 100
     step: 5
@@ -19,10 +19,9 @@ number:
           if (!id(deck).get_inactivity())
             id(device).set_brightness(x);
 
-
   - platform: template
     id: inactive_screen_brightness
-    name: Inactive screen brightness
+    name: Screen Inactive
     min_value: 0
     max_value: 100
     step: 5
@@ -32,17 +31,6 @@ number:
       - lambda: |-
           if (id(deck).get_inactivity())
             id(device).set_brightness(x);
-
-
-#  - platform: template
-#    name: Dummy Temperature
-#    id: dummy_temperature_sensor
-#    min_value: -10
-#    max_value: 30
-#    step: 0.5
-#    initial_value: 20.2
-#    optimistic: true
-#    mode: box
 
 sensor:
   - platform: homeassistant
