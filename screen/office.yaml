@@ -101,7 +101,7 @@ ha_deck:
           enabled: return true;
           value: |-
             char buff[10] = "-";
-            sprintf(buff, "%.1f", id(dummy_temperature_sensor).state);
+            sprintf(buff, "%.1f", id(outdoor_temperature_sensor).state);
             return std::string(buff);
 
         # Light
