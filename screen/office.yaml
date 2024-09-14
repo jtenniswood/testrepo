@@ -51,11 +51,17 @@ output:
     id: out_10
 
 
+#light:
+#  - platform: monochromatic
+#    id: dummy_light
+#    name: Dummy
+#    output: out_10
+
 light:
-  - platform: monochromatic
-    id: dummy_light
+  - platform: homeassistant
+    id: light.office_lamp_light
     name: Dummy
-    output: out_10
+
 
 
 ha_deck:
