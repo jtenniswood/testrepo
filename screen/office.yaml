@@ -133,13 +133,6 @@ ha_deck:
           checked: |-
             return id(dummy_light).current_values.is_on();
           on_turn_on:
-            - light.turn_on:
-                id: dummy_light
-                brightness: 100%
-          on_turn_off:
-            - light.turn_off:
-                id: dummy_light
-          on_turn_on:
             - homeassistant.service:
               service: light.turn_on
               data:
@@ -150,7 +143,13 @@ ha_deck:
               data:
                 entity_id: light.office_lamp_light
 
-
+#          on_turn_on:
+#            - light.turn_on:
+#                id: dummy_light
+#                brightness: 100%
+#          on_turn_off:
+#            - light.turn_off:
+#                id: dummy_light
           
 
         # Screen Brightness
