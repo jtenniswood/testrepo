@@ -39,7 +39,7 @@ sensor:
     id: outdoor_temperature_sensor
     entity_id: sensor.outdoor_temperature
 
-light:
+binary_sensor:
 # This doesn't work, the code expects an on/off
   - platform: homeassistant
     id: dummy_light
