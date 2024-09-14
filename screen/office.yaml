@@ -41,8 +41,12 @@ sensor:
 
 binary_sensor:
   - platform: homeassistant
-    id: office_feature_lights
+    id: light.office_feature_lights
     entity_id: light.office_feature_lights
+
+  - platform: homeassistant
+    id: light.office_storage
+    entity_id: light.office_storage
 
     
 
@@ -85,7 +89,7 @@ ha_deck:
           toggle: true
           enabled: return true;
           checked: |-
-            return id(office_feature_lights).state;
+            return id(light.office_storage).state;
           on_turn_on:
             - homeassistant.service:
                 service: light.turn_on
@@ -120,7 +124,7 @@ ha_deck:
           toggle: true
           enabled: return true;
           checked: |-
-            return id(office_feature_lights).state;
+            return id(light.office_feature_lights).state;
           on_turn_on:
             - homeassistant.service:
                 service: light.turn_on
@@ -153,6 +157,17 @@ ha_deck:
           on_click:
             - lambda: id(deck).switch_screen("$SCREEN_MAIN");
 
+#        - type: slider
+#          position: 200, 8
+#          dimensions: 100x304
+#          text: Brightness
+#          min: 0
+#          max: 100
+#          enabled: return true;
+#          value: return id(device).get_brightness();
+#          on_change:
+#            lambda: id(device).set_brightness(x);
+
         - type: slider
           position: 200, 8
           dimensions: 100x304
@@ -160,6 +175,6 @@ ha_deck:
           min: 0
           max: 100
           enabled: return true;
-          value: return id(device).get_brightness();
+          value: return id(light.office_storage).get_brightness();
           on_change:
-            lambda: id(device).set_brightness(x);
+            lambda: id(light.office_storage).set_brightness(x);
