@@ -57,7 +57,7 @@ output:
 #    name: Dummy
 #    output: out_10
 
-light:
+sensor:
   - platform: homeassistant
     id: light.office_lamp_light
     name: Dummy
