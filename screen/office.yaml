@@ -90,12 +90,12 @@ ha_deck:
             - homeassistant.service:
                 service: light.turn_on
                 data:
-                  entity_id: light.light.office_storage
+                  entity_id: light.office_storage
           on_turn_off:
             - homeassistant.service:
                 service: light.turn_off
                 data:
-                  entity_id: light.light.office_storage
+                  entity_id: light.office_storage
 
 
         # Temperature
