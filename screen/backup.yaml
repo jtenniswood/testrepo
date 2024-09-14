@@ -4,10 +4,11 @@ substitutions:
   SCREEN_KITCHEN: sliders
   SCREEN_LED: led
 
+
 number:
   - platform: template
     id: screen_brightness
-    name: Active screen brightness
+    name: Screen Brightness
     min_value: 0
     max_value: 100
     step: 5
@@ -20,7 +21,7 @@ number:
 
   - platform: template
     id: inactive_screen_brightness
-    name: Inactive screen brightness
+    name: Screen Inactive
     min_value: 0
     max_value: 100
     step: 5
@@ -31,33 +32,32 @@ number:
           if (id(deck).get_inactivity())
             id(device).set_brightness(x);
 
-  - platform: template
-    id: dummy_temperature_sensor
-    name: Dummy Temperature
-    min_value: -10
-    max_value: 30
-    step: 0.5
-    initial_value: 20.2
-    optimistic: true
-    mode: box
 
-output:
-  - platform: ledc
-    pin: 10
-    id: out_10
+sensor:
+# Temperature Sensor
+  - platform: homeassistant
+    id: outdoor_temperature_sensor
+    entity_id: sensor.outdoor_temperature
 
-light:
-  - platform: monochromatic
+binary_sensor:
+  - platform: homeassistant
     id: dummy_light
-    name: Dummy
-    output: out_10
+    entity_id: light.office_lamp_light
+
+
+#output:
+#  - platform: ledc
+#    pin: 10
+#    id: out_10
+
+
 
 
 ha_deck:
   id: deck
   main_screen: ${SCREEN_MAIN}
   inactivity:
-    period: 60 # seconds
+    period: 600 # seconds
     blank_screen: true
   on_inactivity_change:
     lambda:  |-
@@ -67,9 +67,12 @@ ha_deck:
         id(device).set_brightness(id(screen_brightness).state);
       }
 
+
   screens:
     - name: ${SCREEN_MAIN}
       widgets:
+
+        # Time
         - type: value-card
           id: local_time
           position: 8, 8
@@ -78,14 +81,18 @@ ha_deck:
           enabled: return true;
           on_click:
             - logger.log: "Time clicked"
+            
+        # Favourite
         - type: button
           position: 8, 112
           text: "Favorite"
           icon: 󰋑
           visible: |-
             return true;
+
+        # Temperature
         - type: value-card
-          id: dummy_temperature
+          id: outdoor_temperature
           position: 126, 112
           text: Outside
           icon: 󰔏
@@ -93,43 +100,32 @@ ha_deck:
           enabled: return true;
           value: |-
             char buff[10] = "-";
-            sprintf(buff, "%.1f", id(dummy_temperature_sensor).state);
+            sprintf(buff, "%.1f", id(outdoor_temperature_sensor).state);
             return std::string(buff);
-        - type: button
-          position: 362, 8
-          text: Rooms
-          icon: 󰠡
-          enabled: return true;
-          on_click:
-            lambda: |-
-                id(deck).switch_screen("$SCREEN_ROOMS");
-          on_long_press:
-            - logger.log: "Rooms long pressed"
+
+
+        # Light
         - type: button
           position: 8, 216
-          text: Dummy
+          text: Light
           icon: 󰝩
           toggle: true
           enabled: return true;
           checked: |-
-            return id(dummy_light).current_values.is_on();
+            return id(dummy_light).state;
           on_turn_on:
-            - light.turn_on:
-                id: dummy_light
-                brightness: 100%
+            - homeassistant.service:
+                service: light.turn_on
+                data:
+                  entity_id: light.office_lamp_light
           on_turn_off:
-            - light.turn_off:
-                id: dummy_light
-          # on_turn_on:
-          #   homeassistant.service:
-          #     service: light.turn_on
-          #     data:
-          #       entity_id: light.living_room_light
-          # on_turn_off:
-          #   homeassistant.service:
-          #     service: light.turn_off
-          #     data:
-          #       entity_id: light.living_room_light
+            - homeassistant.service:
+                service: light.turn_off
+                data:
+                  entity_id: light.office_lamp_light
+          
+
+        # Screen Brightness
         - type: button
           position: 126, 216
           text: Brightness
@@ -137,97 +133,8 @@ ha_deck:
           enabled: return true;
           on_click:
             lambda: id(deck).switch_screen("$SCREEN_LED");
-    - name: ${SCREEN_ROOMS}
-      widgets:
-        - type: button
-          position: 8, 8
-          icon: 󰁍
-          enabled: |-
-            return true;
-          on_click:
-            then:
-            - lambda: |-
-                id(deck).switch_screen("$SCREEN_MAIN");
-        - type: button
-          position: 126, 8
-          text: "Living Room"
-          icon: 󰒹
-          enabled: |-
-            return true;
-          on_click:
-            then:
-            - lambda: |-
-                id(deck).switch_screen("$SCREEN_MAIN");
-        - type: button
-          position: 244, 8
-          text: "Main Bedroom"
-          icon: 󰿒
-          enabled: |-
-            return true;
-          on_click:
-            then:
-            - lambda: |-
-                id(deck).switch_screen("$SCREEN_MAIN");
-        - type: button
-          position: 362, 8
-          text: "Kids Bedroom"
-          icon: 󰢠
-          enabled: |-
-            return true;
-          on_click:
-            then:
-            - lambda: |-
-                id(deck).switch_screen("$SCREEN_MAIN");
-        - type: button
-          position: 8, 112
-          text: "Kitchen"
-          icon: 󰩰
-          enabled: |-
-            return true;
-          on_click:
-            then:
-            - lambda: |-
-                id(deck).switch_screen("$SCREEN_MAIN");
-        - type: button
-          position: 126, 112
-          text: "Bathroom"
-          icon: 󰦠
-          enabled: |-
-            return true;
-          on_click:
-            then:
-            - lambda: |-
-                id(deck).switch_screen("$SCREEN_MAIN");
-        - type: button
-          position: 244, 112
-          text: "Toilet"
-          icon: 󰦫
-          enabled: |-
-            return true;
-          on_click:
-            then:
-            - lambda: |-
-                id(deck).switch_screen("$SCREEN_MAIN");
-        - type: button
-          position: 362, 112
-          text: "Corridor"
-          icon: 󰾑
-          enabled: |-
-            return true;
-          on_click:
-            then:
-            - lambda: |-
-                id(deck).switch_screen("$SCREEN_MAIN");
-        - type: button
-          position: 8, 216
-          text: "Hallway"
-          icon: 󰷺
-          enabled: |-
-            return true;
-          on_click:
-            then:
-            - lambda: |-
-                id(deck).switch_screen("$SCREEN_MAIN");
+
+
     - name: ${SCREEN_LED}
       widgets:
         - type: button
@@ -237,6 +144,7 @@ ha_deck:
           enabled: return true;
           on_click:
             - lambda: id(deck).switch_screen("$SCREEN_MAIN");
+
         - type: slider
           position: 200, 8
           dimensions: 100x304
