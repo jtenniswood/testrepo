@@ -40,12 +40,15 @@ sensor:
     entity_id: sensor.outdoor_temperature
 
 binary_sensor:
+
+  # Office Feature Lights
   - platform: homeassistant
-    id: light.office_feature_lights
+    id: office_feature_lights
     entity_id: light.office_feature_lights
 
+  # Office Storage Lights
   - platform: homeassistant
-    id: light.office_storage
+    id: office_storage
     entity_id: light.office_storage
 
     
@@ -89,7 +92,7 @@ ha_deck:
           toggle: true
           enabled: return true;
           checked: |-
-            return id(light.office_storage).state;
+            return id(office_storage).state;
           on_turn_on:
             - homeassistant.service:
                 service: light.turn_on
@@ -124,7 +127,7 @@ ha_deck:
           toggle: true
           enabled: return true;
           checked: |-
-            return id(light.office_feature_lights).state;
+            return id(office_feature_lights).state;
           on_turn_on:
             - homeassistant.service:
                 service: light.turn_on
@@ -175,6 +178,6 @@ ha_deck:
           min: 0
           max: 100
           enabled: return true;
-          value: return id(light.office_storage).get_brightness();
+          value: return id(office_storage).get_brightness();
           on_change:
-            lambda: id(light.office_storage).set_brightness(x);
+            lambda: id(office_storage).set_brightness(x);
