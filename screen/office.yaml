@@ -62,7 +62,7 @@ ha_deck:
   id: deck
   main_screen: ${SCREEN_MAIN}
   inactivity:
-    period: 60 # seconds
+    period: 600 # seconds
     blank_screen: true
   on_inactivity_change:
     lambda:  |-
