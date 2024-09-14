@@ -39,10 +39,10 @@ sensor:
     id: outdoor_temperature_sensor
     entity_id: sensor.outdoor_temperature
 
-# Light
-  - platform: homeassistant
-    id: dummy_light
-    entity_id: light.office_lamp_light
+# This doesn't work, the code expects an on/off
+#  - platform: homeassistant
+#    id: dummy_light
+#    entity_id: light.office_lamp_light
 
 
 output:
@@ -137,8 +137,8 @@ ha_deck:
           icon: 󰝩
           toggle: true
           enabled: return true;
-          checked: |-
-            return id(dummy_light).current_values.is_on();
+#          checked: |-
+#            return id(dummy_light).current_values.is_on();
           on_turn_on:
             - homeassistant.service:
                 service: light.turn_on
