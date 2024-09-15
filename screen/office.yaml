@@ -69,10 +69,6 @@ binary_sensor:
     id: printer_power
     entity_id: switch.office_3d_printer_power
 
-  # Office Aircon
-  - platform: homeassistant
-    id: office_air_conditioner
-    entity_id: binary_sensor.office_air_conditioner
 
 
 
