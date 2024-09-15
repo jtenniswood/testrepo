@@ -143,13 +143,13 @@ ha_deck:
           enabled: return true;
           checked: |-
             return id(office_air_conditioner).state;
-          turn_on:
+          on_turn_on:
             - homeassistant.service:
                 service: climate.set_hvac_mode
                 data:
                   entity_id: climate.office_air_conditioner
                   hvac_mode: "auto"
-          turn_off:
+          on_turn_off:
             - homeassistant.service:
                 service: climate.turn_off
                 data:
