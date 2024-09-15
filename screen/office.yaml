@@ -114,7 +114,7 @@ ha_deck:
 
         # Printer Power
         - type: button
-          position: 8, 112
+          position: 244, 112
           text: Printer
           icon: 󰝩
           toggle: true
