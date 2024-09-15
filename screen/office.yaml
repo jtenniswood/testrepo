@@ -61,7 +61,7 @@ binary_sensor:
   # Office Aircon
   - platform: homeassistant
     id: office_air_conditioner
-    entity_id: climate.office_air_conditioner
+    entity_id: input_boolean.office_air_conditioner
 
 
 ha_deck:
