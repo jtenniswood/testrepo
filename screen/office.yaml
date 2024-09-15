@@ -120,17 +120,17 @@ ha_deck:
           toggle: true
           enabled: return true;
           checked: |-
-            return id(office_storage).state;
+            return id(3d_printer_power).state;
           on_turn_on:
             - homeassistant.service:
-                service: light.turn_on
+                service: switch.turn_on
                 data:
-                  entity_id: light.office_storage
+                  entity_id: switch.office_3d_printer_power
           on_turn_off:
             - homeassistant.service:
-                service: light.turn_off
+                service: switch.turn_off
                 data:
-                  entity_id: light.office_storage
+                  entity_id: switch.office_3d_printer_power
 
 
         # Temperature
