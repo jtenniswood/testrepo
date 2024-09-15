@@ -85,10 +85,8 @@ ha_deck:
           id: local_time
           position: 8, 8
           dimensions: 228x96
-#          text: "London (England)"
-          enabled: false;
-#          on_click:
-#            - logger.log: "Time clicked"
+          visible: |-
+            return true;
             
 
         # Storage Light
