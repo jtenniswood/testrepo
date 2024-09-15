@@ -56,7 +56,7 @@ binary_sensor:
 
   # 3d Printer
   - platform: homeassistant
-    id: 3d_printer_power
+    id: printer_power
     entity_id: switch.office_3d_printer_power
     
 
@@ -120,7 +120,7 @@ ha_deck:
           toggle: true
           enabled: return true;
           checked: |-
-            return id(3d_printer_power).state;
+            return id(printer_power).state;
           on_turn_on:
             - homeassistant.service:
                 service: switch.turn_on
