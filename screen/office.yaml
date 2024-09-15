@@ -137,8 +137,8 @@ ha_deck:
         # Office Aircon
         - type: button
           position: 362, 112
-          text: Printer
-          icon: 󰝩
+          text: Aircon
+          icon: 󰈐
           toggle: true
           enabled: return true;
           checked: |-
@@ -151,7 +151,7 @@ ha_deck:
                   hvac_mode: "auto"
           on_turn_off:
             - homeassistant.service:
-                service: climate.turn_off
+                service: climate.set_hvac_mode
                 data:
                   entity_id: climate.office_air_conditioner
                   hvac_mode: "off"
