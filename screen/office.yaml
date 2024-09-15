@@ -41,7 +41,6 @@ sensor:
 
 
 
-
 binary_sensor:
 
   # Office Feature Lights
@@ -58,7 +57,11 @@ binary_sensor:
   - platform: homeassistant
     id: printer_power
     entity_id: switch.office_3d_printer_power
-    
+
+  # Office Aircon
+  - platform: homeassistant
+    id: office_air_conditioner
+    entity_id: climate.office_air_conditioner
 
 
 ha_deck:
@@ -129,6 +132,30 @@ ha_deck:
                 service: switch.turn_off
                 data:
                   entity_id: switch.office_3d_printer_power
+
+
+        # Office Aircon
+        - type: button
+          position: 362, 112
+          text: Printer
+          icon: 󰝩
+          toggle: true
+          enabled: return true;
+          checked: |-
+            return id(office_air_conditioner).state;
+          on_turn_on:
+            - homeassistant.service:
+                service: switch.turn_on
+                data:
+                  entity_id: climate.office_air_conditioner
+                  hvac_mode: "auto"
+          on_turn_off:
+            - homeassistant.service:
+                service: switch.turn_off
+                data:
+                  entity_id: climate.office_air_conditioner
+                  hvac_mode: "off"
+
 
 
         # Temperature
