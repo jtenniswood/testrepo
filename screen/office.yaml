@@ -168,14 +168,16 @@ ha_deck:
             return id(office_blind).state;
           on_turn_on:
             - homeassistant.service:
-                service: cover.close_cover
+                service: cover.set_cover_position
                 data:
                   entity_id: cover.office_blind
+                  position: 0
           on_turn_off:
             - homeassistant.service:
-                service: cover.open_cover
+                service: cover.set_cover_position
                 data:
-                  entity_id: cover.office_blind                 
+                  entity_id: cover.office_blind
+                  position: 100
 
         # Temperature
         - type: value-card
