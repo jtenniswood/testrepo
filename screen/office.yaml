@@ -60,9 +60,10 @@ binary_sensor:
     id: office_air_condition
     entity_id: binary_sensor.office_air_conditioner
     
-
-
-
+  # Office Blind
+  - platform: homeassistant
+    id: office
+    entity_id: cover.office_blind
 
 
 
@@ -155,6 +156,26 @@ ha_deck:
                 data:
                   entity_id: climate.office_air_conditioner
                   hvac_mode: "off"
+
+        # Office Blind
+        - type: button
+          position: 362, 112
+          text: Blind
+          icon: 󰈐
+          toggle: true
+          enabled: return true;
+          checked: |-
+            return id(office_blind).state;
+          on_turn_on:
+            - homeassistant.service:
+                service: cover.close_cover
+                data:
+                  entity_id: cover.office_blind
+          on_turn_off:
+            - homeassistant.service:
+                service: cover.open_cover
+                data:
+                  entity_id: cover.office_blind                 
 
         # Temperature
         - type: value-card
