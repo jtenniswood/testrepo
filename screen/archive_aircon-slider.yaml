@@ -1,3 +1,10 @@
+sensor:
+# Office Blinds
+  - platform: homeassistant
+    id: office_blind_position
+    entity_id: cover.office_blind
+    attribute: target_lift_position
+
 
 # Main Screen
   screens:
