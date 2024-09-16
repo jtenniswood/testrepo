@@ -258,4 +258,17 @@ ha_deck:
           on_click:
             - lambda: id(deck).switch_screen("$SCREEN_MAIN");
 
-
+        - type: slider
+          position: 200, 8
+          dimensions: 100x304
+          text: Brightness
+          min: 0
+          max: 100
+          enabled: return true;
+          value: return id(office_blind_position);
+          on_change:
+          - homeassistant.service:
+              service: cover.set_cover_position
+              data:
+                entity_id: cover.office_blind
+                position: !lambda return x;
