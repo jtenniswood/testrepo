@@ -1,8 +1,5 @@
 substitutions:
   SCREEN_MAIN: master
-  SCREEN_ROOMS: rooms
-  SCREEN_KITCHEN: sliders
-  SCREEN_LED: led
 
 
 number:
@@ -39,9 +36,6 @@ sensor:
     id: outdoor_temperature_sensor
     entity_id: sensor.outdoor_temperature
 
-
-
-
 # Text sensor to read the hvac_mode attribute from the climate entity
 text_sensor:
   - platform: homeassistant
@@ -68,10 +62,6 @@ binary_sensor:
   - platform: homeassistant
     id: printer_power
     entity_id: switch.office_3d_printer_power
-
-
-
-
 
 # Template binary sensor to represent the AC auto mode status
   - platform: template
@@ -119,7 +109,6 @@ ha_deck:
           visible: |-
             return true;
             
-
         # Storage Light
         - type: button
           position: 8, 112
@@ -140,7 +129,6 @@ ha_deck:
                 data:
                   entity_id: light.office_storage
 
-
         # Printer Power
         - type: button
           position: 244, 112
@@ -160,7 +148,6 @@ ha_deck:
                 service: switch.turn_off
                 data:
                   entity_id: switch.office_3d_printer_power
-
 
         # Office Aircon
         - type: button
@@ -183,8 +170,6 @@ ha_deck:
                 data:
                   entity_id: climate.office_air_conditioner
                   hvac_mode: "off"
-
-
 
         # Temperature
         - type: value-card
@@ -219,36 +204,3 @@ ha_deck:
                 service: light.turn_off
                 data:
                   entity_id: light.office_feature_lights
-          
-
-        # Screen Brightness
-        - type: button
-          position: 126, 216
-          text: Brightness
-          icon: 󰖨
-          enabled: return true;
-          on_click:
-            lambda: id(deck).switch_screen("$SCREEN_LED");
-
-
-    - name: ${SCREEN_LED}
-      widgets:
-        - type: button
-          position: 0, 0
-          dimensions: 48x320
-          icon: 󰅁
-          enabled: return true;
-          on_click:
-            - lambda: id(deck).switch_screen("$SCREEN_MAIN");
-
-        - type: slider
-          position: 200, 8
-          dimensions: 100x304
-          text: Brightness
-          min: 0
-          max: 100
-          enabled: return true;
-          value: return id(device).get_brightness();
-          on_change:
-            lambda: id(device).set_brightness(x);
-
