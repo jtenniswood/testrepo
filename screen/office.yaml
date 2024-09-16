@@ -41,7 +41,6 @@ text_sensor:
   - platform: homeassistant
     id: office_air_conditioner_mode
     entity_id: climate.office_air_conditioner
-    attribute: hvac_mode
     internal: true
 
 
