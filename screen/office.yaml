@@ -193,13 +193,13 @@ ha_deck:
                 service: cover.set_cover_position
                 data:
                   entity_id: cover.office_blind
-                  position: '0'
+                  position: '20'
           on_turn_off:
             - homeassistant.service:
                 service: cover.set_cover_position
                 data:
                   entity_id: cover.office_blind
-                  position: '80'
+                  position: '100'
 
         # Temperature
         - type: value-card
