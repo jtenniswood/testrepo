@@ -36,13 +36,6 @@ sensor:
     id: outdoor_temperature_sensor
     entity_id: sensor.outdoor_temperature
 
-# Office Air Conditioner Mode
-text_sensor:
-  - platform: homeassistant
-    id: office_air_conditioner_mode
-    entity_id: climate.office_air_conditioner
-    internal: true
-
 
 
 binary_sensor:
@@ -61,19 +54,12 @@ binary_sensor:
   - platform: homeassistant
     id: printer_power
     entity_id: switch.office_3d_printer_power
-    
+
   # Office Air Conditioner
-  - platform: template
-    id: office_air_conditioner
-    lambda: |-
-      std::string state = id(office_air_conditioner_mode).state;
-      if (state == "auto") {
-        return {"on"};
-      } else if (state == "off") {
-        return {"off"};
-      } else {
-        return {state};
-      }
+  - platform: homeassistant
+    id: office_air_condition
+    entity_id: binary_sensor.office_air_conditioner
+    
 
 
 
@@ -156,7 +142,7 @@ ha_deck:
           toggle: true
           enabled: return true;
           checked: |-
-            return id(office_air_conditioner).state;
+            return id(office_air_condition).state;
           on_turn_on:
             - homeassistant.service:
                 service: climate.set_hvac_mode
