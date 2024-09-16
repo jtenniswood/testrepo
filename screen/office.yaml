@@ -55,7 +55,7 @@ sensor:
   - platform: homeassistant
     id: office_blind_position
     entity_id: cover.office_blind
-    attribute: current_position
+    attribute: target_lift_position
 
 
 
