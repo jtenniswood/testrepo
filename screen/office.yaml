@@ -11,32 +11,11 @@ ha_deck:
           visible: |-
             return true;
 
-            
-        # Storage Light
-        - type: button
-          position: ${box5}
-          text: Storage
-          icon: 󰝩
-          toggle: true
-          enabled: return true;
-          checked: |-
-            return id(office_storage).state;
-          on_turn_on:
-            - homeassistant.service:
-                service: light.turn_on
-                data:
-                  entity_id: light.office_storage
-          on_turn_off:
-            - homeassistant.service:
-                service: light.turn_off
-                data:
-                  entity_id: light.office_storage
-
 
         # Outdoor Temperature
         - type: value-card
           id: outdoor_temperature
-          position: ${box6}
+          position: ${box3}
           text: Outside
           icon: 󰔏
           unit: °C
@@ -47,53 +26,23 @@ ha_deck:
             return std::string(buff);
 
 
-        # Printer Power
-        - type: button
-          position: ${box7}
-          text: Printer
-          icon: 󰐫
-          toggle: true
+        # Office Temperature
+        - type: value-card
+          id: outdoor_temperature
+          position: ${box4}
+          text: Office
+          icon: 󰔏
+          unit: °C
           enabled: return true;
-          checked: |-
-            return id(printer_power).state;
-          on_turn_on:
-            - homeassistant.service:
-                service: switch.turn_on
-                data:
-                  entity_id: switch.office_3d_printer_power
-          on_turn_off:
-            - homeassistant.service:
-                service: switch.turn_off
-                data:
-                  entity_id: switch.office_3d_printer_power
-
-
-        # Office Aircon
-        - type: button
-          position: ${box8}
-          text: Aircon
-          icon: 󰈐
-          toggle: true
-          enabled: return true;
-          checked: |-
-            return id(office_air_condition).state;
-          on_turn_on:
-            - homeassistant.service:
-                service: climate.set_hvac_mode
-                data:
-                  entity_id: climate.office_air_conditioner
-                  hvac_mode: "auto"
-          on_turn_off:
-            - homeassistant.service:
-                service: climate.set_hvac_mode
-                data:
-                  entity_id: climate.office_air_conditioner
-                  hvac_mode: "off"
+          value: |-
+            char buff[10] = "-";
+            sprintf(buff, "%.1f", id(sensor.office_temperature).state);
+            return std::string(buff);
 
 
         # Feature Lighting
         - type: button
-          position: ${box9}
+          position: ${box5}
           text: Feature
           icon: 󱁑
           toggle: true
@@ -112,9 +61,53 @@ ha_deck:
                   entity_id: light.office_feature_lights
 
 
+        # Storage Light
+        - type: button
+          position: ${box6}
+          text: Storage
+          icon: 󰝩
+          toggle: true
+          enabled: return true;
+          checked: |-
+            return id(office_storage).state;
+          on_turn_on:
+            - homeassistant.service:
+                service: light.turn_on
+                data:
+                  entity_id: light.office_storage
+          on_turn_off:
+            - homeassistant.service:
+                service: light.turn_off
+                data:
+                  entity_id: light.office_storage
+
+
+        # Office Air Conditioner
+        - type: button
+          position: ${box7}
+          text: Aircon
+          icon: 󰵃
+          toggle: true
+          enabled: return true;
+          checked: |-
+            return id(office_air_condition).state;
+          on_turn_on:
+            - homeassistant.service:
+                service: climate.set_hvac_mode
+                data:
+                  entity_id: climate.office_air_conditioner
+                  hvac_mode: "auto"
+          on_turn_off:
+            - homeassistant.service:
+                service: climate.set_hvac_mode
+                data:
+                  entity_id: climate.office_air_conditioner
+                  hvac_mode: "off"
+
+
         # Office Blind
         - type: button
-          position: ${box10}
+          position: ${box8}
           text: Blind
           icon: 󰂬
           toggle: true
@@ -133,3 +126,27 @@ ha_deck:
                 data:
                   entity_id: cover.office_blind
                   position: '100'
+
+
+                
+        # Printer Power
+        - type: button
+          position: ${box9}
+          text: Printer
+          icon: 󰐫
+          toggle: true
+          enabled: return true;
+          checked: |-
+            return id(printer_power).state;
+          on_turn_on:
+            - homeassistant.service:
+                service: switch.turn_on
+                data:
+                  entity_id: switch.office_3d_printer_power
+          on_turn_off:
+            - homeassistant.service:
+                service: switch.turn_off
+                data:
+                  entity_id: switch.office_3d_printer_power
+
+
