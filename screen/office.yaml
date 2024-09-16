@@ -63,7 +63,7 @@ binary_sensor:
   # Office Blind
   - platform: homeassistant
     id: office_blind
-    entity_id: cover.office_blind
+    entity_id: binary_sensor.office_blind_state
 
 
 
@@ -161,7 +161,7 @@ ha_deck:
         - type: button
           position: 362, 216
           text: Blind
-          icon: 󰈐
+          icon: 󰂬
           toggle: true
           enabled: return true;
           checked: |-
