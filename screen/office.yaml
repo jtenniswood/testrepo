@@ -62,7 +62,7 @@ binary_sensor:
     
   # Office Blind
   - platform: homeassistant
-    id: office
+    id: office_blind
     entity_id: cover.office_blind
 
 
