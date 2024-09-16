@@ -36,13 +36,13 @@ sensor:
     id: outdoor_temperature_sensor
     entity_id: sensor.outdoor_temperature
 
-# Text sensor to read the hvac_mode attribute from the climate entity
+# Office Air Conditioner Mode
 text_sensor:
   - platform: homeassistant
-    id: ac_mode
+    id: office_air_conditioner_mode
     entity_id: climate.office_air_conditioner
     attribute: hvac_mode
-    internal: true  # Hide this sensor from Home Assistant if not needed
+    internal: true
 
 
 
@@ -63,20 +63,16 @@ binary_sensor:
     id: printer_power
     entity_id: switch.office_3d_printer_power
 
-# Template binary sensor to represent the AC auto mode status
-  - platform: template
+  # Office Air Conditioner
+  - platform: homeassistant
     id: office_air_conditioner
-    name: "AC Auto Mode"
-    lambda: |-
-      return id(ac_mode).state == "auto";
-    icon: "mdi:air-conditioner"
-    device_class: power
-
-
-
-
-
-
+    entity_id: binary_sensor.office_air_conditioner
+    
+  # Office Air Conditioner
+#  - platform: template
+#    id: office_air_conditioner
+#    lambda: |-
+#      return id(office_air_conditioner_mode).state == "auto";
 
 
 
