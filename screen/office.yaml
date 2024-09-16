@@ -66,7 +66,7 @@ binary_sensor:
   - platform: template
     id: office_air_conditioner
     lambda: |-
-      std::string state = id(office_air_conditioner_mode).mode;
+      std::string state = id(office_air_conditioner_mode).state;
       if (state == "auto") {
         return {"on"};
       } else if (state == "off") {
