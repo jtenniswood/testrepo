@@ -266,7 +266,7 @@ ha_deck:
           min: 0
           max: 100
           enabled: return true;
-          value: return id(office_blind).state;
+          value: return id(office_blind_position).state;
           on_change:
           - homeassistant.service:
               service: cover.set_cover_position
