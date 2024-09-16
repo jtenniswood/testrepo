@@ -1,0 +1,16 @@
+substitutions:
+  SCREEN_MAIN: master
+
+  # Button Grid
+  box1: 8, 8
+  box2: 126, 8
+  box3: 244, 8
+  box4: 362, 8
+  box5: 8, 112
+  box6: 126, 112
+  box7: 244, 112
+  box8: 362, 112
+  box9: 8, 216
+  box10: 126, 216
+  box11: 244, 216
+  box12: 362, 216
