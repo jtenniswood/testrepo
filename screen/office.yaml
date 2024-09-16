@@ -159,7 +159,7 @@ ha_deck:
 
         # Office Blind
         - type: button
-          position: 362, 112
+          position: 362, 216
           text: Blind
           icon: 󰈐
           toggle: true
