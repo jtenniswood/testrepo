@@ -258,13 +258,4 @@ ha_deck:
           on_click:
             - lambda: id(deck).switch_screen("$SCREEN_MAIN");
 
-        - type: slider
-          position: 200, 8
-          dimensions: 100x304
-          text: Brightness
-          min: 0
-          max: 100
-          enabled: return true;
-          value: return id(office_blind_position);
-          on_change:
-            lambda: id(office_blind_position).set_cover_position(x);
+
