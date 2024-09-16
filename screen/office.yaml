@@ -265,6 +265,6 @@ ha_deck:
           min: 0
           max: 100
           enabled: return true;
-          value: return id(office_blind_position).target_lift_position();
+          value: return id(office_blind_position);
           on_change:
             lambda: id(office_blind_position).set_cover_position(x);
