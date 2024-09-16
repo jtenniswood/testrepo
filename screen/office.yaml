@@ -210,7 +210,7 @@ ha_deck:
         - type: button
           position: 8, 216
           text: Feature
-          icon: 󰝩
+          icon: 󱁑
           toggle: true
           enabled: return true;
           checked: |-
