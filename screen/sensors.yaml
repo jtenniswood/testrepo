@@ -2,13 +2,13 @@ sensor:
 
 # Outdoor Temperature
   - platform: homeassistant
-    id: outdoor_temperature
+    id: outdoor_temperature_sensor
     entity_id: sensor.outdoor_temperature
 
 
 # Office Temperature
   - platform: homeassistant
-    id: office_temperature
+    id: office_temperature_sensor
     entity_id: sensor.office_temperature
 
 
