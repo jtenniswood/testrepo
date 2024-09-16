@@ -119,7 +119,7 @@ ha_deck:
         - type: button
           position: 244, 112
           text: Printer
-          icon: 󰝩
+          icon: 󰐫
           toggle: true
           enabled: return true;
           checked: |-
