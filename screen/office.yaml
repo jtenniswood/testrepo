@@ -64,15 +64,24 @@ binary_sensor:
     entity_id: switch.office_3d_printer_power
 
   # Office Air Conditioner
-  - platform: homeassistant
-    id: office_air_conditioner
-    entity_id: binary_sensor.office_air_conditioner
+#  - platform: homeassistant
+#    id: office_air_conditioner
+#    entity_id: binary_sensor.office_air_conditioner
     
   # Office Air Conditioner
-#  - platform: template
-#    id: office_air_conditioner
-#    lambda: |-
-#      return id(office_air_conditioner_mode).state == "auto";
+  - platform: template
+    id: office_air_conditioner
+    lambda: |-
+      std::string state = id(climate_office_air_conditioner).mode;
+      if (state == "auto") {
+        return {"on"};
+      } else if (state == "off") {
+        return {"off"};
+      } else {
+        return {state};
+      }
+
+
 
 
 
