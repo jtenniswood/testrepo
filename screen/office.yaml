@@ -22,7 +22,7 @@ ha_deck:
           enabled: return true;
           value: |-
             char buff[10] = "-";
-            sprintf(buff, "%.1f", id(outdoor_temperature).state);
+            sprintf(buff, "%.1f", id(outdoor_temperature_sensor).state);
             return std::string(buff);
 
 
@@ -36,7 +36,7 @@ ha_deck:
           enabled: return true;
           value: |-
             char buff[10] = "-";
-            sprintf(buff, "%.1f", id(office_temperature).state);
+            sprintf(buff, "%.1f", id(office_temperature_sensor).state);
             return std::string(buff);
 
 
