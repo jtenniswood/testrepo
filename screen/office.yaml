@@ -199,7 +199,7 @@ ha_deck:
                 service: cover.set_cover_position
                 data:
                   entity_id: cover.office_blind
-                  position: '100'
+                  position: '80'
 
         # Temperature
         - type: value-card
