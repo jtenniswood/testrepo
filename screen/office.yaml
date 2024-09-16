@@ -1,6 +1,5 @@
 substitutions:
   SCREEN_MAIN: master
-  SCREEN_LED: led
 
   # Button Grid
   box1: 8, 8
@@ -91,20 +90,6 @@ binary_sensor:
 
 
 ha_deck:
-  id: deck
-  main_screen: ${SCREEN_MAIN}
-  inactivity:
-    period: 600 # seconds
-    blank_screen: true
-  on_inactivity_change:
-    lambda:  |-
-      if (x) {
-        id(device).set_brightness(id(inactive_screen_brightness).state);
-      } else {
-        id(device).set_brightness(id(screen_brightness).state);
-      }
-
-
   screens:
     - name: ${SCREEN_MAIN}
       widgets:
