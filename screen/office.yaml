@@ -16,32 +16,6 @@ substitutions:
   box12: 362, 216
   
 
-number:
-  - platform: template
-    id: screen_brightness
-    name: Screen Brightness
-    min_value: 0
-    max_value: 100
-    step: 5
-    initial_value: 100
-    restore_value: true
-    set_action:
-      - lambda: |-
-          if (!id(deck).get_inactivity())
-            id(device).set_brightness(x);
-
-  - platform: template
-    id: inactive_screen_brightness
-    name: Screen Inactive
-    min_value: 0
-    max_value: 100
-    step: 5
-    initial_value: 20
-    restore_value: true
-    set_action:
-      - lambda: |-
-          if (id(deck).get_inactivity())
-            id(device).set_brightness(x);
 
 
 sensor:
