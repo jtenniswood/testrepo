@@ -11,6 +11,10 @@ esphome:
   friendly_name: ${friendly_name}
   area: ${room}
 
+# Over the Air Updates
+ota:
+- platform: esphome
+
 # Enable Home Assistant API
 api:
 
