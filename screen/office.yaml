@@ -7,7 +7,7 @@ ha_deck:
         - type: value-card
           id: local_time
           position: ${box1}
-          dimensions: 228x96
+#          dimensions: 228x96
           visible: |-
             return true;
 
