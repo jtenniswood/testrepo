@@ -28,7 +28,7 @@ ha_deck:
 
         # Office Temperature
         - type: value-card
-          id: outdoor_temperature
+          id: office_temperature
           position: ${box4}
           text: Office
           icon: 󰔏
