@@ -1,5 +1,6 @@
 substitutions:
   SCREEN_MAIN: master
+  SCREEN_LED: led
   
   box1: 8, 8
   box2: 126, 8
@@ -49,6 +50,15 @@ sensor:
     id: outdoor_temperature_sensor
     entity_id: sensor.outdoor_temperature
 
+  - platform: homeassistant
+    id: office_blind_position
+    entity_id: binary_sensor.office_blind_state
+    lambda: |-
+      if (id(office_blind).current_position.has_value()) {
+        return id(office_blind).current_position.value() * 100.0;
+      } else {
+        return NAN;
+      }
 
 
 binary_sensor:
@@ -77,6 +87,7 @@ binary_sensor:
   - platform: homeassistant
     id: office_blind
     entity_id: binary_sensor.office_blind_state
+
 
 
 
@@ -225,3 +236,38 @@ ha_deck:
                 service: light.turn_off
                 data:
                   entity_id: light.office_feature_lights
+
+        - type: button
+          position: 126, 216
+          text: Blind
+          icon: 󰖨
+          enabled: return true;
+          on_click:
+            lambda: id(deck).switch_screen("$SCREEN_LED");
+
+
+
+
+
+
+    - name: ${SCREEN_LED}
+      widgets:
+
+        - type: button
+          position: 0, 0
+          dimensions: 48x320
+          icon: 󰅁
+          enabled: return true;
+          on_click:
+            - lambda: id(deck).switch_screen("$SCREEN_MAIN");
+
+        - type: slider
+          position: 200, 8
+          dimensions: 100x304
+          text: Brightness
+          min: 0
+          max: 100
+          enabled: return true;
+          value: return id(office_blind_position).target_lift_position();
+          on_change:
+            lambda: id(office_blind_position).set_cover_position(x);
