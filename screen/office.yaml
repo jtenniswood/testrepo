@@ -1,21 +1,3 @@
-substitutions:
-  SCREEN_MAIN: master
-
-  # Button Grid
-  box1: 8, 8
-  box2: 126, 8
-  box3: 244, 8
-  box4: 362, 8
-  box5: 8, 112
-  box6: 126, 112
-  box7: 244, 112
-  box8: 362, 112
-  box9: 8, 216
-  box10: 126, 216
-  box11: 244, 216
-  box12: 362, 216
-
-
 ha_deck:
   screens:
     - name: ${SCREEN_MAIN}
@@ -28,6 +10,7 @@ ha_deck:
           dimensions: 228x96
           visible: |-
             return true;
+
             
         # Storage Light
         - type: button
@@ -49,6 +32,21 @@ ha_deck:
                 data:
                   entity_id: light.office_storage
 
+
+        # Outdoor Temperature
+        - type: value-card
+          id: outdoor_temperature
+          position: ${box6}
+          text: Outside
+          icon: 󰔏
+          unit: °C
+          enabled: return true;
+          value: |-
+            char buff[10] = "-";
+            sprintf(buff, "%.1f", id(outdoor_temperature_sensor).state);
+            return std::string(buff);
+
+
         # Printer Power
         - type: button
           position: ${box7}
@@ -68,6 +66,7 @@ ha_deck:
                 service: switch.turn_off
                 data:
                   entity_id: switch.office_3d_printer_power
+
 
         # Office Aircon
         - type: button
@@ -91,9 +90,31 @@ ha_deck:
                   entity_id: climate.office_air_conditioner
                   hvac_mode: "off"
 
+
+        # Feature Lighting
+        - type: button
+          position: ${box9}
+          text: Feature
+          icon: 󱁑
+          toggle: true
+          enabled: return true;
+          checked: |-
+            return id(office_feature_lights).state;
+          on_turn_on:
+            - homeassistant.service:
+                service: light.turn_on
+                data:
+                  entity_id: light.office_feature_lights
+          on_turn_off:
+            - homeassistant.service:
+                service: light.turn_off
+                data:
+                  entity_id: light.office_feature_lights
+
+
         # Office Blind
         - type: button
-          position: 362, 216
+          position: ${box10}
           text: Blind
           icon: 󰂬
           toggle: true
@@ -112,36 +133,3 @@ ha_deck:
                 data:
                   entity_id: cover.office_blind
                   position: '100'
-
-        # Outdoor Temperature
-        - type: value-card
-          id: outdoor_temperature
-          position: 126, 112
-          text: Outside
-          icon: 󰔏
-          unit: °C
-          enabled: return true;
-          value: |-
-            char buff[10] = "-";
-            sprintf(buff, "%.1f", id(outdoor_temperature_sensor).state);
-            return std::string(buff);
-
-        # Feature Lighting
-        - type: button
-          position: 8, 216
-          text: Feature
-          icon: 󱁑
-          toggle: true
-          enabled: return true;
-          checked: |-
-            return id(office_feature_lights).state;
-          on_turn_on:
-            - homeassistant.service:
-                service: light.turn_on
-                data:
-                  entity_id: light.office_feature_lights
-          on_turn_off:
-            - homeassistant.service:
-                service: light.turn_off
-                data:
-                  entity_id: light.office_feature_lights
