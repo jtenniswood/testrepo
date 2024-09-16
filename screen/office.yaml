@@ -86,7 +86,7 @@ ha_deck:
         - type: button
           position: ${box7}
           text: Aircon
-          icon: 󰵃
+          icon: 󰈐
           toggle: true
           enabled: return true;
           checked: |-
