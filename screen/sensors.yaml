@@ -1,0 +1,38 @@
+sensor:
+# Temperature Sensor
+  - platform: homeassistant
+    id: outdoor_temperature_sensor
+    entity_id: sensor.outdoor_temperature
+
+# Office Blinds
+  - platform: homeassistant
+    id: office_blind_position
+    entity_id: cover.office_blind
+    attribute: target_lift_position
+
+
+binary_sensor:
+  # Office Feature Lights
+  - platform: homeassistant
+    id: office_feature_lights
+    entity_id: light.office_feature_lights
+
+  # Office Storage Lights
+  - platform: homeassistant
+    id: office_storage
+    entity_id: light.office_storage
+
+  # 3d Printer
+  - platform: homeassistant
+    id: printer_power
+    entity_id: switch.office_3d_printer_power
+
+  # Office Air Conditioner
+  - platform: homeassistant
+    id: office_air_condition
+    entity_id: binary_sensor.office_air_conditioner
+    
+  # Office Blind
+  - platform: homeassistant
+    id: office_blind
+    entity_id: binary_sensor.office_blind_state
