@@ -50,15 +50,12 @@ sensor:
     id: outdoor_temperature_sensor
     entity_id: sensor.outdoor_temperature
 
+# Office Blinds
   - platform: homeassistant
     id: office_blind_position
-    entity_id: binary_sensor.office_blind_state
-    lambda: |-
-      if (id(office_blind).current_position.has_value()) {
-        return id(office_blind).current_position.value() * 100.0;
-      } else {
-        return NAN;
-      }
+    entity_id: cover.office_blind
+    attribute: current_position
+
 
 
 binary_sensor:
