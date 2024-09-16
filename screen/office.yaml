@@ -235,11 +235,14 @@ ha_deck:
                 data:
                   entity_id: light.office_feature_lights
 
+        # Blinds Open Page
         - type: button
           position: 126, 216
           text: Blind
           icon: 󰂬
           enabled: return true;
+          checked: |-
+            return id(office_blind).state;
           on_click:
             lambda: id(deck).switch_screen("$SCREEN_LED");
 
@@ -247,7 +250,7 @@ ha_deck:
 
 
 
-
+# Slider for Blinds
     - name: ${SCREEN_LED}
       widgets:
 
