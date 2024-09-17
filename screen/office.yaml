@@ -151,7 +151,7 @@ ha_deck:
 
 
         # Scene
-        - type: value-card
+        - type: button
           id: office_video_call
           position: ${box10}
           on_press:
