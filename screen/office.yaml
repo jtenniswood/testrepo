@@ -152,7 +152,7 @@ ha_deck:
 
         # Scene
         - type: value-card
-          id: screen-call
+          id: office_video_call
           position: ${box10}
           on_press:
             - homeassistant.service:
