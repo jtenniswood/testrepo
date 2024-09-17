@@ -152,8 +152,10 @@ ha_deck:
 
         # Scene
         - type: button
-          id: office_video_call
           position: ${box10}
+          text: Calls
+          icon: 󰐫
+          toggle: false
           on_click:
             - homeassistant.service:
                 service: scene.turn_on
