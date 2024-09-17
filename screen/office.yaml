@@ -154,7 +154,7 @@ ha_deck:
         - type: button
           id: office_video_call
           position: ${box10}
-          on_press:
+          on_click:
             - homeassistant.service:
                 service: scene.turn_on
                 data:
