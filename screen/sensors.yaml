@@ -50,3 +50,9 @@ binary_sensor:
   - platform: homeassistant
     id: office_blind
     entity_id: binary_sensor.office_blind_state
+
+
+  # Office Presence
+  - platform: homeassistant
+    id: office_presence
+    entity_id: binary_sensor.office_presence_presence
