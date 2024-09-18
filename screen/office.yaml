@@ -161,8 +161,9 @@ ha_deck:
           position: ${box10}
           text: Features
           icon: 󱁑
-          enabled: |-
-            return true;
+          enabled: return true;
+          checked: |-
+            return id(office_scene_features).state;
           on_click:
             then:
             - homeassistant.service:
