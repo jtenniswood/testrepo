@@ -154,9 +154,11 @@ ha_deck:
         - type: button
           position: ${box10}
           text: Calls
-          icon: 󰐫
-          toggle: false
+          icon: 󰒹
+          enabled: |-
+            return true;
           on_click:
+            then:
             - homeassistant.service:
                 service: scene.turn_on
                 data:
