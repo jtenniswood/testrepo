@@ -46,7 +46,7 @@ ha_deck:
 
         # Lenovo Power
         - type: button
-          position: ${box5}
+          position: ${box12}
           text: Lenovo
           icon: 󰇅
           toggle: true
@@ -62,7 +62,7 @@ ha_deck:
         
         # Printer Power
         - type: button
-          position: ${box6}
+          position: ${box5}
           text: Printer
           icon: 󰐫
           toggle: true
@@ -79,6 +79,27 @@ ha_deck:
                 service: switch.turn_off
                 data:
                   entity_id: switch.office_3d_printer_power
+
+
+        # Printer Lights
+        - type: button
+          position: ${box6}
+          text: Lights
+          icon: 󰐫
+          toggle: true
+          enabled: return true;
+          checked: |-
+            return id(printer_lights).state;
+          on_turn_on:
+            - homeassistant.service:
+                service: switch.turn_on
+                data:
+                  entity_id: switch.office_3d_printer_lights
+          on_turn_off:
+            - homeassistant.service:
+                service: switch.turn_off
+                data:
+                  entity_id: switch.office_3d_printer_lights
 
                   
         # Office Air Conditioner
@@ -179,7 +200,7 @@ ha_deck:
 
         # Storage Light
         - type: button
-          position: ${box12}
+          position: ${box4}
           text: Storage
           icon: 󰝩
           toggle: true
