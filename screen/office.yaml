@@ -52,7 +52,7 @@ ha_deck:
           toggle: true
           enabled: return true;
           checked: |-
-            return id(office_lenovo_power_state.state;
+            return id(office_lenovo_power_state).state;
           on_turn_on:
             - homeassistant.service:
                 service: button.press
