@@ -153,8 +153,23 @@ ha_deck:
         # Scene
         - type: button
           position: ${box10}
+          text: Features
+          icon: 󱟐
+          enabled: |-
+            return true;
+          on_click:
+            then:
+            - homeassistant.service:
+                service: scene.turn_on
+                data:
+                  entity_id: scene.office_features
+
+
+        # Scene
+        - type: button
+          position: ${box11}
           text: Calls
-          icon: 󰒹
+          icon: 󱍖
           enabled: |-
             return true;
           on_click:
@@ -163,3 +178,18 @@ ha_deck:
                 service: scene.turn_on
                 data:
                   entity_id: scene.office_video_call
+
+
+        # Scene
+        - type: button
+          position: ${box12}
+          text: Evening
+          icon: 󰌶
+          enabled: |-
+            return true;
+          on_click:
+            then:
+            - homeassistant.service:
+                service: scene.turn_on
+                data:
+                  entity_id: scene.office_evening
