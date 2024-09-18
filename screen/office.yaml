@@ -163,7 +163,7 @@ ha_deck:
           enabled: return true;
           checked: |-
             return id(office_scene_features).state;
-          on_turn_on:
+          on_click:
             - homeassistant.service:
                 service: scene.turn_on
                 data:
