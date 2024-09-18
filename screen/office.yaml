@@ -19,7 +19,7 @@ ha_deck:
         # Outdoor Temperature
         - type: value-card
           id: outdoor_temperature
-          position: ${box3}
+          position: ${box2}
           text: Outside
           # icon: 󰔏
           unit: °C
@@ -33,7 +33,7 @@ ha_deck:
         # Office Temperature
         - type: value-card
           id: office_temperature
-          position: ${box4}
+          position: ${box3}
           text: Office
           # icon: 󰔏
           unit: °C
