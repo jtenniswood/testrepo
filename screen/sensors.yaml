@@ -55,7 +55,7 @@ binary_sensor:
   # Lenovo Power
   - platform: homeassistant
     id: office_lenovo_power_state
-    entity_id: binary_sensor.office_lenovo_power_state
+    entity_id: switch.office_lenovo_power_switch
 
 
 # Scenes
