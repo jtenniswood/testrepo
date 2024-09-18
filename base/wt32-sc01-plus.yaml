@@ -1,9 +1,22 @@
 # Designed for WT32-SC01 PLUS
+#esp32:
+#  board: esp32-s3-devkitc-1
+#  framework:
+#    type: arduino
+  flash_size: 16MB
+
 esp32:
   board: esp32-s3-devkitc-1
-  framework:
-    type: arduino
   flash_size: 16MB
+  framework:
+    type: esp-idf
+    sdkconfig_options:
+      CONFIG_ESP32S3_DEFAULT_CPU_FREQ_240: y
+      CONFIG_ESP32S3_DATA_CACHE_64KB: y
+      CONFIG_SPIRAM_FETCH_INSTRUCTIONS: y
+      CONFIG_SPIRAM_RODATA: y
+
+
 
 # Esphome
 esphome:
