@@ -40,7 +40,7 @@ binary_sensor:
   # 3d Printer Lights
   - platform: homeassistant
     id: printer_lights
-    entity_id: switch.office_3d_printer_light_switch
+    entity_id: switch.office_3d_printer_lights
     
   # Office Air Conditioner
   - platform: homeassistant
