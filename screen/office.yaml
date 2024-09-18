@@ -136,7 +136,7 @@ ha_deck:
 
         # Scene
         - type: button
-          position: ${box10}
+          position: ${box9}
           text: Features
           icon: 󱁑
           enabled: return true;
@@ -152,7 +152,7 @@ ha_deck:
 
         # Scene
         - type: button
-          position: ${box11}
+          position: ${box10}
           text: Calls
           icon: 󰔂
           enabled: |-
@@ -167,7 +167,7 @@ ha_deck:
 
         # Scene
         - type: button
-          position: ${box12}
+          position: ${box11}
           text: Evening
           icon: 󰌶
           enabled: |-
