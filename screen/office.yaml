@@ -43,26 +43,20 @@ ha_deck:
             sprintf(buff, "%.0f", id(office_temperature_sensor).state);
             return std::string(buff);
 
-
-        # Storage Light
+        # Lenovo Power
         - type: button
           position: ${box4}
-          text: Storage
-          icon: 󰝩
+          text: Lenovo
+          icon: 󰇅
           toggle: true
           enabled: return true;
           checked: |-
-            return id(office_storage).state;
+            return id(office_lenovo_power_state).state;
           on_turn_on:
             - homeassistant.service:
-                service: light.turn_on
+                service: switch.turn_on
                 data:
-                  entity_id: light.office_storage
-          on_turn_off:
-            - homeassistant.service:
-                service: light.turn_off
-                data:
-                  entity_id: light.office_storage
+                  entity_id: switch.office_lenovo_power_switch
 
         
         # Printer Power
@@ -207,20 +201,25 @@ ha_deck:
                   entity_id: scene.office_evening
 
 
-        # Lenovo Power
+        # Storage Light
         - type: button
           position: ${box12}
-          text: Lenovo
-          icon: 󰇅
+          text: Storage
+          icon: 󰝩
           toggle: true
           enabled: return true;
           checked: |-
-            return id(office_lenovo_power_state).state;
+            return id(office_storage).state;
           on_turn_on:
             - homeassistant.service:
-                service: switch.turn_on
+                service: light.turn_on
                 data:
-                  entity_id: switch.office_lenovo_power_switch
+                  entity_id: light.office_storage
+          on_turn_off:
+            - homeassistant.service:
+                service: light.turn_off
+                data:
+                  entity_id: light.office_storage
 
 
 # Slider for Blinds
