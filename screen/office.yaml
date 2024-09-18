@@ -130,9 +130,8 @@ ha_deck:
                 data:
                   entity_id: cover.office_blind
                   position: '100'
-          on_long_click:
-            then:
-              lambda: id(deck).switch_screen("$SCREEN_BLINDS");
+          on_long_press:
+            lambda: id(deck).switch_screen("$SCREEN_BLINDS");
 
 
                 
