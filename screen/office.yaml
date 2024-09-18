@@ -154,7 +154,7 @@ ha_deck:
         - type: button
           position: ${box10}
           text: Features
-          icon: 󱟐
+          icon: 󱁑
           enabled: |-
             return true;
           on_click:
