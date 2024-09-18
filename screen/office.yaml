@@ -55,9 +55,9 @@ ha_deck:
             return id(office_lenovo_power_state).state;
           on_turn_on:
             - homeassistant.service:
-                service: button.press
+                service: switch.turn_on
                 data:
-                  entity_id: button.wake_lenovo_server
+                  entity_id: switch.office_lenovo_power_switch
 
         
         # Printer Power
