@@ -131,7 +131,9 @@ ha_deck:
                   entity_id: cover.office_blind
                   position: '100'
           on_long_press:
-            lambda: id(deck).switch_screen("$SCREEN_BLINDS");
+            - min_length: 200ms
+              then:
+                lambda: id(deck).switch_screen("$SCREEN_BLINDS");
 
 
                 
