@@ -40,24 +40,29 @@ ha_deck:
           enabled: return true;
           value: |-
             char buff[10] = "-";
-            sprintf(buff, "%.1f", id(office_temperature_sensor).state);
+            sprintf(buff, "%.0f", id(office_temperature_sensor).state);
             return std::string(buff);
 
 
-        # Lenovo Power
+        # Storage Light
         - type: button
-          position: ${box12}
-          text: Lenovo
-          icon: 󰇅
+          position: ${box4}
+          text: Storage
+          icon: 󰝩
           toggle: true
           enabled: return true;
           checked: |-
-            return id(office_lenovo_power_state).state;
+            return id(office_storage).state;
           on_turn_on:
             - homeassistant.service:
-                service: switch.turn_on
+                service: light.turn_on
                 data:
-                  entity_id: switch.office_lenovo_power_switch
+                  entity_id: light.office_storage
+          on_turn_off:
+            - homeassistant.service:
+                service: light.turn_off
+                data:
+                  entity_id: light.office_storage
 
         
         # Printer Power
@@ -150,7 +155,7 @@ ha_deck:
             lambda: id(deck).switch_screen("$SCREEN_BLINDS");
 
 
-        # Scene
+        # Scene Features
         - type: button
           position: ${box9}
           text: Features
@@ -166,7 +171,7 @@ ha_deck:
                   entity_id: scene.office_features
 
 
-        # Scene
+        # Scene Calls
         - type: button
           position: ${box10}
           text: Calls
@@ -182,7 +187,7 @@ ha_deck:
                   entity_id: scene.office_desk_call
 
 
-        # Scene
+        # Scene Evening
         - type: button
           position: ${box11}
           text: Evening
@@ -198,25 +203,20 @@ ha_deck:
                   entity_id: scene.office_evening
 
 
-        # Storage Light
+        # Lenovo Power
         - type: button
-          position: ${box4}
-          text: Storage
-          icon: 󰝩
+          position: ${box12}
+          text: Lenovo
+          icon: 󰇅
           toggle: true
           enabled: return true;
           checked: |-
-            return id(office_storage).state;
+            return id(office_lenovo_power_state).state;
           on_turn_on:
             - homeassistant.service:
-                service: light.turn_on
+                service: switch.turn_on
                 data:
-                  entity_id: light.office_storage
-          on_turn_off:
-            - homeassistant.service:
-                service: light.turn_off
-                data:
-                  entity_id: light.office_storage
+                  entity_id: switch.office_lenovo_power_switch
 
 
 # Slider for Blinds
