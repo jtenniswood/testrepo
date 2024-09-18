@@ -1,3 +1,7 @@
+substitutions:
+  SCREEN_MAIN: master
+  SCREEN_BLINDS: blinds
+
 ha_deck:
   screens:
     - name: ${SCREEN_MAIN}
@@ -126,6 +130,8 @@ ha_deck:
                 data:
                   entity_id: cover.office_blind
                   position: '100'
+          on_long_press:
+            lambda: id(deck).switch_screen("$SCREEN_BLINDS");
 
 
                 
@@ -193,3 +199,32 @@ ha_deck:
                 service: scene.turn_on
                 data:
                   entity_id: scene.office_evening
+
+
+
+# Slider for Blinds
+    - name: ${SCREEN_BLINDS}
+      widgets:
+
+        - type: button
+          position: 0, 0
+          dimensions: 48x320
+          icon: 󰅁
+          enabled: return true;
+          on_click:
+            - lambda: id(deck).switch_screen("$SCREEN_MAIN");
+
+        - type: slider
+          position: 200, 8
+          dimensions: 100x304
+          text: Blind
+          min: 0
+          max: 100
+          enabled: return true;
+          value: return id(office_blind_position).state;
+          on_change:
+          - homeassistant.service:
+              service: cover.set_cover_position
+              data:
+                entity_id: cover.office_blind
+                position: !lambda return x;
