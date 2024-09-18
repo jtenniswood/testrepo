@@ -62,5 +62,10 @@ binary_sensor:
 
   # Office Scene Desk Calls
   - platform: homeassistant
-    id: office_scene_desk_calls
-    entity_id: binary_sensor.office_scene_desk_calls
+    id: office_scene_desk_call
+    entity_id: binary_sensor.office_scene_desk_call
+
+  # Office Scene Desk Calls
+  - platform: homeassistant
+    id: office_scene_evening
+    entity_id: binary_sensor.office_scene_evening
