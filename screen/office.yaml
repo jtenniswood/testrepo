@@ -186,7 +186,7 @@ ha_deck:
         - type: button
           position: ${box11}
           text: Evening
-          icon: 󱩔
+          icon: 󰌵
           enabled: return true;
           checked: |-
             return id(office_scene_evening).state;
