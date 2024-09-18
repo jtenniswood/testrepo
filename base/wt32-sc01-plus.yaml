@@ -42,3 +42,8 @@ external_components:
 hd_device_sc01_plus:
   id: device
   brightness: 100
+
+
+psram:
+    mode: octal
+    speed: 80MHz
