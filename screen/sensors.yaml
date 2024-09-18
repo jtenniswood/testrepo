@@ -56,3 +56,9 @@ binary_sensor:
   - platform: homeassistant
     id: office_presence
     entity_id: binary_sensor.office_presence_presence
+
+
+  # Office Scene Features
+  - platform: homeassistant
+    id: office_scene_features
+    entity_id: binary_sensor.office_scene_features
