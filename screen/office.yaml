@@ -44,30 +44,9 @@ ha_deck:
             return std::string(buff);
 
 
-        # Printer Power
-        - type: button
-          position: ${box5}
-          text: Printer
-          icon: 󰐫
-          toggle: true
-          enabled: return true;
-          checked: |-
-            return id(printer_power).state;
-          on_turn_on:
-            - homeassistant.service:
-                service: switch.turn_on
-                data:
-                  entity_id: switch.office_3d_printer_power
-          on_turn_off:
-            - homeassistant.service:
-                service: switch.turn_off
-                data:
-                  entity_id: switch.office_3d_printer_power
-
-
         # Storage Light
         - type: button
-          position: ${box6}
+          position: ${box5}
           text: Storage
           icon: 󰝩
           toggle: true
@@ -86,6 +65,27 @@ ha_deck:
                   entity_id: light.office_storage
 
 
+        # Printer Power
+        - type: button
+          position: ${box6}
+          text: Printer
+          icon: 󰐫
+          toggle: true
+          enabled: return true;
+          checked: |-
+            return id(printer_power).state;
+          on_turn_on:
+            - homeassistant.service:
+                service: switch.turn_on
+                data:
+                  entity_id: switch.office_3d_printer_power
+          on_turn_off:
+            - homeassistant.service:
+                service: switch.turn_off
+                data:
+                  entity_id: switch.office_3d_printer_power
+
+                  
         # Office Air Conditioner
         - type: button
           position: ${box7}
