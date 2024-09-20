@@ -12,13 +12,13 @@ uart:
 #  includes:
 #    - library/ld2412.h
 
-external_components:
-  - source:
-      type: git
-      url: https://github.com/Rihan9/LD2412
-      ref: main
-    components: [ld2412]
-    
+#external_components:
+#  - source:
+#      type: git
+#      url: https://github.com/Rihan9/LD2412
+#      ref: main
+#    components: [ld2412]
+
 
 # Presense Sensor
 custom_component:
