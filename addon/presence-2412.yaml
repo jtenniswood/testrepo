@@ -21,6 +21,7 @@ binary_sensor:
   - platform: LD2412
     has_target:
       name: "Presence"
+      id: has_target
     has_moving_target:
       name: "Moving Target"
     has_still_target:
