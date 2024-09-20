@@ -1,4 +1,11 @@
 # LD2412 Presense Sensor
+external_components:
+  - source:
+      type: git
+      url: https://github.com/Rihan9/LD2412
+      ref: main
+    components: [LD2412]
+    
 uart:
   id: uart_1
   rx_pin: GPIO${rx_pin}
@@ -6,71 +13,56 @@ uart:
   baud_rate: 115200
   parity: NONE
 
-
-# Sensor Library
-#esphome:
-#  includes:
-#    - library/ld2412.h
-
-#external_components:
-#  - source:
-#      type: git
-#      url: https://github.com/Rihan9/LD2412
-#      ref: main
-#    components: [ld2412]
-
-
-# Presense Sensor
-custom_component:
-  - lambda: |-
-      return {new LD2412(id(uart_1))};
-    components:
-      - id: ld2412
-
+LD2412:
+  id: ld2412
+  throttle: 3s
 
 binary_sensor:
-# Presense Sensor
-  - platform: custom
-    lambda: |-
-      auto uart_component = static_cast<LD2412 *>(ld2412);
-      return {uart_component->hasTarget,uart_component->hasMovingTarget,uart_component->hasStillTarget};
-    binary_sensors:
-      - name: "Presence"
-        icon: mdi:account
-      - name: "Moving Target"
-        icon: mdi:motion-sensor
-      - name: "Still Target"
-        icon: mdi:motion-sensor
+  - platform: LD2412
+    has_target:
+      name: Presence
+    has_moving_target:
+      name: Moving Target
+    has_still_target:
+      name: Still Target
 
+sensor:
+  - platform: LD2412
+    moving_distance:
+      name : Moving Distance
+    still_distance:
+      name: Still Distance
+    moving_energy:
+      name: Move Energy
+    still_energy:
+      name: Still Energy
+    detection_distance:
+      name: Detection Distance
 
-sensor: 
-# Presense Sensor
-  - platform: custom
-    lambda: |-
-      auto uart_component = static_cast<LD2412 *>(ld2412);
-      return {uart_component->movingTargetDistance,uart_component->movingTargetEnergy,uart_component->stillTargetDistance,uart_component->stillTargetEnergy};
-    sensors:
-      - name: "Moving Distance"
-        unit_of_measurement: "cm"
-        accuracy_decimals: 0
-        icon: mdi:signal-distance-variant
-      - name: "Moving Energy"
-        unit_of_measurement: "%"
-        accuracy_decimals: 0
-        icon: mdi:motion-sensor
-      - name: "Still Distance"
-        unit_of_measurement: "cm"
-        accuracy_decimals: 0
-        icon: mdi:signal-distance-variant
-      - name: "Still Energy"
-        unit_of_measurement: "%"
-        accuracy_decimals: 0
-        icon: mdi:flash
+number:
+  - platform: LD2412
+    timeout:
+      name: "Presence Hold"
+    min_distance_gate:
+      name: "Min Distance"
+    max_distance_gate:
+      name: "Max Distance"
+  
+select:
+  - platform: LD2412
+    out_pin_level:
+      name: 'Hardware output pin level'
 
+button:
+  - platform: LD2412
+    factory_reset:
+      name: "Factory Reset"
+    restart:
+      name: "Restart"
+    query_params:
+      name: query params
 
-# Presense Sensor 
-button: 
-  - platform: template
-    name: "Reboot sensor"
-    on_press:
-      lambda: 'static_cast<LD2412 *>(ld2412)->reboot();'
+text_sensor:
+  - platform: LD2412
+    version:
+      name: "Firmware"
