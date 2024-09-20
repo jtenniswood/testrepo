@@ -14,9 +14,7 @@ uart:
 
 external_components:
   - source:
-      type: git
-      url: github://Rihan9/LD2412/components/LD2412/
-      ref: main
+      url: github://Rihan9/LD2412/components/LD2412@main
     components: [ld2412]
 
 # https://github.com/Rihan9/LD2412/tree/main/components/LD2412
