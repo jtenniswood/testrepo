@@ -5,7 +5,7 @@ external_components:
       url: https://github.com/Rihan9/LD2412
       ref: main
     components: [LD2412]
-    
+
 uart:
   id: uart_1
   rx_pin: GPIO${rx_pin}
@@ -20,24 +20,24 @@ LD2412:
 binary_sensor:
   - platform: LD2412
     has_target:
-      name: Presence
+      name: "Presence"
     has_moving_target:
-      name: Moving Target
+      name: "Moving Target"
     has_still_target:
-      name: Still Target
+      name: "Still Target"
 
 sensor:
   - platform: LD2412
     moving_distance:
-      name : Moving Distance
+      name : "Moving Distance"
     still_distance:
-      name: Still Distance
+      name: "Still Distance"
     moving_energy:
-      name: Move Energy
+      name: "Move Energy"
     still_energy:
-      name: Still Energy
+      name: "Still Energy"
     detection_distance:
-      name: Detection Distance
+      name: "Detection Distance"
 
 number:
   - platform: LD2412
@@ -51,7 +51,7 @@ number:
 select:
   - platform: LD2412
     out_pin_level:
-      name: 'Hardware output pin level'
+      name: "Hardware Output Pin Level"
 
 button:
   - platform: LD2412
@@ -60,7 +60,7 @@ button:
     restart:
       name: "Restart"
     query_params:
-      name: query params
+      name: "Query Parameters"
 
 text_sensor:
   - platform: LD2412
