@@ -15,7 +15,7 @@ uart:
 
 LD2412:
   id: ld2412
-  throttle: 3s
+#  throttle: 3s
 
 binary_sensor:
   - platform: LD2412
