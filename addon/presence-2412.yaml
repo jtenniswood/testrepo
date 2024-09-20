@@ -8,9 +8,18 @@ uart:
 
 
 # Sensor Library
-esphome:
-  includes:
-    - library/ld2412.h
+#esphome:
+#  includes:
+#    - library/ld2412.h
+
+external_components:
+  - source:
+      type: git
+      url: https://github.com/Rihan9/LD2412
+      ref: main
+    components: [ld2412]
+
+# https://github.com/Rihan9/LD2412/tree/main/components/LD2412
 
 
 # Presense Sensor
