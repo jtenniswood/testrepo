@@ -13,58 +13,214 @@ uart:
   baud_rate: 115200
   parity: NONE
 
-ld2412:
-  id: ld2412
-#  throttle: 3s
-
 binary_sensor:
+  - platform: ld2410
+    has_target:
+      name: Presence
+    has_moving_target:
+      name: Moving Target
+    has_still_target:
+      name: Still Target
+    out_pin_presence_status:
+      name: Outside Presence
+
   - platform: ld2412
     has_target:
-      name: "Presence"
-      id: has_target
+      name: Presence
     has_moving_target:
-      name: "Moving Target"
+      name: Moving Target
     has_still_target:
-      name: "Still Target"
+      name: Still Target
 
 sensor:
-  - platform: ld2412
+  - platform: ld2410
+    light:
+      name: light
     moving_distance:
-      name : "Moving Distance"
+      name : Moving Distance
     still_distance:
-      name: "Still Distance"
+      name: Still Distance
     moving_energy:
-      name: "Move Energy"
+      name: Move Energy
     still_energy:
-      name: "Still Energy"
+      name: Still Energy
     detection_distance:
-      name: "Detection Distance"
-      id: detection_distance
+      name: Detection Distance
+    g0:
+      move_energy:
+        name: g0 move energy
+      still_energy:
+        name: g0 still energy
+    g1:
+      move_energy:
+        name: g1 move energy
+      still_energy:
+        name: g1 still energy
+    g2:
+      move_energy:
+        name: g2 move energy
+      still_energy:
+        name: g2 still energy
+    g3:
+      move_energy:
+        name: g3 move energy
+      still_energy:
+        name: g3 still energy
+    g4:
+      move_energy:
+        name: g4 move energy
+      still_energy:
+        name: g4 still energy
+    g5:
+      move_energy:
+        name: g5 move energy
+      still_energy:
+        name: g5 still energy
+    g6:
+      move_energy:
+        name: g6 move energy
+      still_energy:
+        name: g6 still energy
+    g7:
+      move_energy:
+        name: g7 move energy
+      still_energy:
+        name: g7 still energy
+    g8:
+      move_energy:
+        name: g8 move energy
+      still_energy:
+        name: g8 still energy
+
+
+
+switch:
+  - platform: ld2410
+    engineering_mode:
+      name: "engineering mode"
+    bluetooth:
+      name: "control bluetooth"
 
 number:
-  - platform: ld2412
+  - platform: ld2410
     timeout:
-      name: "Presence Hold"
-    min_distance_gate:
-      name: "Min Distance"
-    max_distance_gate:
-      name: "Max Distance"
-  
-select:
-  - platform: ld2412
-    out_pin_level:
-      name: "Hardware Output Pin Level"
+      name: timeout
+    light_threshold:
+      name: light threshold
+    max_move_distance_gate:
+      name: max move distance gate
+    max_still_distance_gate:
+      name: max still distance gate
+    g0:
+      move_threshold:
+        name: g0 move threshold
+      still_threshold:
+        name: g0 still threshold
+    g1:
+      move_threshold:
+        name: g1 move threshold
+      still_threshold:
+        name: g1 still threshold
+    g2:
+      move_threshold:
+        name: g2 move threshold
+      still_threshold:
+        name: g2 still threshold
+    g3:
+      move_threshold:
+        name: g3 move threshold
+      still_threshold:
+        name: g3 still threshold
+    g4:
+      move_threshold:
+        name: g4 move threshold
+      still_threshold:
+        name: g4 still threshold
+    g5:
+      move_threshold:
+        name: g5 move threshold
+      still_threshold:
+        name: g5 still threshold
+    g6:
+      move_threshold:
+        name: g6 move threshold
+      still_threshold:
+        name: g6 still threshold
+    g7:
+      move_threshold:
+        name: g7 move threshold
+      still_threshold:
+        name: g7 still threshold
+    g8:
+      move_threshold:
+        name: g8 move threshold
+      still_threshold:
+        name: g8 still threshold
 
 button:
-  - platform: ld2412
+  - platform: ld2410
     factory_reset:
-      name: "Factory Reset"
+      name: "factory reset"
     restart:
-      name: "Restart"
+      name: "restart"
     query_params:
-      name: "Query Parameters"
+      name: query params
+
+  - platform: template
+    name: "LD2412 BLE Enable"
+    # disabled_by_default: True
+    entity_category: "config"
+    icon: mdi:bluetooth
+    on_press:
+      lambda: |-
+        id(ld2412_radar) -> ble_control(true);
+  - platform: template
+    name: "LD2412 BLE Disable"
+    # disabled_by_default: True
+    entity_category: "config"
+    icon: mdi:bluetooth-off
+    on_press:
+      lambda: |-
+        id(ld2412_radar) -> ble_control(false);
+  - platform: template
+    name: "LD2412 Reboot"
+    icon: mdi:radar
+    entity_category: "config"
+    on_press:
+      lambda: |-
+        id(ld2412_radar) -> reboot();
+  - platform: template
+    name: "LD2412 Factory Reset"
+    icon: mdi:restart
+    entity_category: "config"
+    on_press:
+      - lambda: |-
+          id(ld2412_radar) -> factoryReset();
+
 
 text_sensor:
+  - platform: ld2410
+    version:
+      name: "firmware version"
+    mac_address:
+      name: "mac address"
+
   - platform: ld2412
     version:
-      name: "Firmware"
+      name: LD2412 FM Version
+      id: ld2412_fm_version
+    mac_address:
+      name: LD2412 Mac
+      id: ld2412_mac
+
+
+select:
+  - platform: ld2410
+    distance_resolution:
+      name: "distance resolution"
+    baud_rate:
+      name: "baud rate"
+    light_function:
+      name: light function
+    out_pin_level:
+      name: out pin level      
