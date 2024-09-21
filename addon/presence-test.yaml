@@ -1,4 +1,4 @@
-# LD2412 Presense Sensor
+# ld2412 Presense Sensor
 external_components:
   - source:
       type: git
@@ -13,12 +13,12 @@ uart:
   baud_rate: 115200
   parity: NONE
 
-LD2412:
+ld2412:
   id: ld2412
 #  throttle: 3s
 
 binary_sensor:
-  - platform: LD2412
+  - platform: ld2412
     has_target:
       name: "Presence"
       id: has_target
@@ -28,7 +28,7 @@ binary_sensor:
       name: "Still Target"
 
 sensor:
-  - platform: LD2412
+  - platform: ld2412
     moving_distance:
       name : "Moving Distance"
     still_distance:
@@ -42,7 +42,7 @@ sensor:
       id: detection_distance
 
 number:
-  - platform: LD2412
+  - platform: ld2412
     timeout:
       name: "Presence Hold"
     min_distance_gate:
@@ -51,12 +51,12 @@ number:
       name: "Max Distance"
   
 select:
-  - platform: LD2412
+  - platform: ld2412
     out_pin_level:
       name: "Hardware Output Pin Level"
 
 button:
-  - platform: LD2412
+  - platform: ld2412
     factory_reset:
       name: "Factory Reset"
     restart:
@@ -65,6 +65,6 @@ button:
       name: "Query Parameters"
 
 text_sensor:
-  - platform: LD2412
+  - platform: ld2412
     version:
       name: "Firmware"
