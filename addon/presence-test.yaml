@@ -1,0 +1,70 @@
+# LD2412 Presense Sensor
+external_components:
+  - source:
+      type: git
+      url: https://github.com/Rihan9/LD2412
+      ref: main
+    components: [LD2412]
+
+uart:
+  id: uart_1
+  rx_pin: GPIO${rx_pin}
+  tx_pin: GPIO${tx_pin}
+  baud_rate: 115200
+  parity: NONE
+
+LD2412:
+  id: ld2412
+#  throttle: 3s
+
+binary_sensor:
+  - platform: LD2412
+    has_target:
+      name: "Presence"
+      id: has_target
+    has_moving_target:
+      name: "Moving Target"
+    has_still_target:
+      name: "Still Target"
+
+sensor:
+  - platform: LD2412
+    moving_distance:
+      name : "Moving Distance"
+    still_distance:
+      name: "Still Distance"
+    moving_energy:
+      name: "Move Energy"
+    still_energy:
+      name: "Still Energy"
+    detection_distance:
+      name: "Detection Distance"
+      id: detection_distance
+
+number:
+  - platform: LD2412
+    timeout:
+      name: "Presence Hold"
+    min_distance_gate:
+      name: "Min Distance"
+    max_distance_gate:
+      name: "Max Distance"
+  
+select:
+  - platform: LD2412
+    out_pin_level:
+      name: "Hardware Output Pin Level"
+
+button:
+  - platform: LD2412
+    factory_reset:
+      name: "Factory Reset"
+    restart:
+      name: "Restart"
+    query_params:
+      name: "Query Parameters"
+
+text_sensor:
+  - platform: LD2412
+    version:
+      name: "Firmware"
