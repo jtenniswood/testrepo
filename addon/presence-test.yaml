@@ -14,7 +14,7 @@ uart:
   parity: NONE
 
 binary_sensor:
-  - platform: ld2410
+  - platform: ld2412
     has_target:
       name: Presence
     has_moving_target:
@@ -33,7 +33,7 @@ binary_sensor:
       name: Still Target
 
 sensor:
-  - platform: ld2410
+  - platform: ld2412
     light:
       name: light
     moving_distance:
@@ -95,14 +95,14 @@ sensor:
 
 
 switch:
-  - platform: ld2410
+  - platform: ld2412
     engineering_mode:
       name: "engineering mode"
     bluetooth:
       name: "control bluetooth"
 
 number:
-  - platform: ld2410
+  - platform: ld2412
     timeout:
       name: timeout
     light_threshold:
@@ -158,7 +158,7 @@ number:
         name: g8 still threshold
 
 button:
-  - platform: ld2410
+  - platform: ld2412
     factory_reset:
       name: "factory reset"
     restart:
@@ -199,7 +199,7 @@ button:
 
 
 text_sensor:
-  - platform: ld2410
+  - platform: ld2412
     version:
       name: "firmware version"
     mac_address:
@@ -215,7 +215,7 @@ text_sensor:
 
 
 select:
-  - platform: ld2410
+  - platform: ld2412
     distance_resolution:
       name: "distance resolution"
     baud_rate:
