@@ -2,9 +2,9 @@
 external_components:
   - source:
       type: git
-      url: https://github.com/Rihan9/LD2412
+      url: https://github.com/screekworkshop/custom_components_support_for_screek_l12
       ref: main
-    components: [LD2412]
+    components: [ld2412]
 
 uart:
   id: uart_1
