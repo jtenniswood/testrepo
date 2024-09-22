@@ -15,7 +15,6 @@ uart:
 
 LD2412:
   id: ld2412
-#  throttle: 3s
 
 binary_sensor:
   - platform: LD2412
@@ -58,8 +57,3 @@ button:
       name: "Restart"
     query_params:
       name: "Query Parameters"
-
-text_sensor:
-  - platform: LD2412
-    version:
-      name: "Firmware"
