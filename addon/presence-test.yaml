@@ -88,7 +88,7 @@ button:
           id(ld2412_radar) -> factoryReset();
 
 number:
-  - platform: ld2410
+  - platform: ld2412
     g0:
       move_threshold:
         name: "G0 Move Threshold"
