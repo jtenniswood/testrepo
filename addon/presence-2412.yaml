@@ -49,11 +49,6 @@ number:
       name: "Min Distance"
     max_distance_gate:
       name: "Max Distance"
-  
-select:
-  - platform: LD2412
-    out_pin_level:
-      name: "Hardware Output Pin Level"
 
 button:
   - platform: LD2412
