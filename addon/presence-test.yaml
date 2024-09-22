@@ -48,8 +48,6 @@ sensor:
       name: Move Energy
     still_energy:
       name: Still Energy
-    luminance:
-      name: Illuminance
 
 time:
   - platform: sntp
