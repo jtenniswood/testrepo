@@ -30,6 +30,7 @@ binary_sensor:
   - platform: ld2412
     has_target:
       name: Presence
+      id: has_target
     has_moving_target:
       name: Moving Target
     has_still_target:
@@ -49,6 +50,9 @@ sensor:
       name: Still Energy
     luminance:
       name: luminance
+    detection_distance:
+      name: Detection Distance
+      id: detection_distance
 
 time:
   - platform: sntp
