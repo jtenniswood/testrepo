@@ -49,7 +49,7 @@ sensor:
     still_energy:
       name: Still Energy
     luminance:
-      name: luminance
+      name: Illuminance
 
 time:
   - platform: sntp
