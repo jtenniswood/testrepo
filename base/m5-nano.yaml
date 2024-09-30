@@ -9,6 +9,10 @@ esp32:
     platform_version: 6.5.0
     sdkconfig_options:
       CONFIG_ESPTOOLPY_FLASHSIZE_4MB: y
+# Exrta config
+      CONFIG_OPENTHREAD_ENABLED: n #
+      CONFIG_ENABLE_WIFI_STATION: y #
+      CONFIG_USE_MINIMAL_MDNS: y #
 
 # Esphome
 esphome:
@@ -25,3 +29,49 @@ api:
 
 # Enable logging
 logger:
+
+
+
+
+# Light Addon
+light:
+  - platform: status_led
+    name: "Status LED"
+    entity_category: diagnostic
+    pin: GPIO7
+
+  #G20=RGB WS2812
+  - platform: esp32_rmt_led_strip
+    rgb_order: GRB
+    pin: GPIO20
+    num_leds: 4
+    # RMT 0 channels will be occupied by IR
+    rmt_channel: 1
+    chipset: ws2812
+    name: "RGB LED"
+    entity_category: diagnostic
+    power_supply: rgbpwr
+
+power_supply:
+  - id: 'rgbpwr'
+    enable_on_boot: true
+    pin: GPIO19
+    enable_time: 10ms
+    keep_on_time: 10ms
+
+#G9=Button
+binary_sensor:
+  - platform: gpio
+    name: Button
+    entity_category: diagnostic
+    pin:
+      number: GPIO9
+      inverted: true
+      mode:
+        input: true
+        pullup: true
+    filters:
+      - delayed_off: 10ms
+    on_press:
+      then:
+        - logger.log: Button Pressed
