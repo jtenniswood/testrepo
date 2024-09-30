@@ -9,7 +9,6 @@ esp32:
     platform_version: 6.5.0
     sdkconfig_options:
       CONFIG_ESPTOOLPY_FLASHSIZE_4MB: y
-# Exrta config
       CONFIG_OPENTHREAD_ENABLED: n #
       CONFIG_ENABLE_WIFI_STATION: y #
       CONFIG_USE_MINIMAL_MDNS: y #
