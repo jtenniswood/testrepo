@@ -29,40 +29,29 @@ api:
 # Enable logging
 logger:
 
-
-
-
-# Light Addon
 light:
+
+  # Status Light
   - platform: status_led
     name: "Status LED"
     entity_category: diagnostic
     pin: GPIO7
 
-  #G20=RGB WS2812
+  # Led Light
   - platform: esp32_rmt_led_strip
     rgb_order: GRB
     pin: GPIO20
     num_leds: 4
-    # RMT 0 channels will be occupied by IR
     rmt_channel: 1
     chipset: ws2812
-    name: "RGB LED"
+    name: "Led Light"
     entity_category: diagnostic
     power_supply: rgbpwr
 
-power_supply:
-  - id: 'rgbpwr'
-    enable_on_boot: true
-    pin: GPIO19
-    enable_time: 10ms
-    keep_on_time: 10ms
-
-#G9=Button
+# Button
 binary_sensor:
   - platform: gpio
     name: Button
-    entity_category: diagnostic
     pin:
       number: GPIO9
       inverted: true
