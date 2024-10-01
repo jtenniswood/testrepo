@@ -65,7 +65,7 @@ binary_sensor:
       mode:
         input: true
         pullup: true
-      ignore_strapping_warning: true
+      # ignore_strapping_warning: true
     filters:
       - delayed_off: 10ms
     on_press:
