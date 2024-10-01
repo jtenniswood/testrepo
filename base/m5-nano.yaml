@@ -30,7 +30,6 @@ api:
 logger:
 
 light:
-
   # Status Light
   - platform: status_led
     name: "Status LED"
@@ -47,6 +46,14 @@ light:
     name: "Led Light"
     entity_category: diagnostic
     power_supply: rgbpwr
+
+# Led Power
+power_supply:
+  - id: 'rgbpwr'
+    enable_on_boot: true
+    pin: GPIO19
+    enable_time: 10ms
+    keep_on_time: 10ms
 
 # Button
 binary_sensor:
