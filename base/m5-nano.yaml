@@ -29,6 +29,7 @@ api:
 # Enable logging
 logger:
 
+# Led Lights
 light:
   # Status Light
   - platform: status_led
@@ -47,7 +48,6 @@ light:
     entity_category: diagnostic
     power_supply: rgbpwr
 
-# Led Power
 power_supply:
   - id: 'rgbpwr'
     enable_on_boot: true
