@@ -37,6 +37,6 @@ light:
     num_leds: 1
     rmt_channel: 0
     chipset: ws2812
-    name: "Pixel Light"
+    name: "Light"
     icon: "mdi:led-outline"
     entity_category: diagnostic
