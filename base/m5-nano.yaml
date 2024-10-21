@@ -33,7 +33,7 @@ logger:
 light:
   # Status Light
   - platform: status_led
-    name: "Status LED"
+    name: "Status Light"
     entity_category: diagnostic
     pin: GPIO7
 
@@ -44,7 +44,7 @@ light:
     num_leds: 1
     rmt_channel: 0
     chipset: ws2812
-    name: "Led Light"
+    name: "Pixel Light"
     icon: "mdi:led-outline"
     entity_category: diagnostic
     power_supply: rgbpwr
